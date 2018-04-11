@@ -17,6 +17,9 @@
 		802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB47207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB48207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
+		A548305C31099790CEDB68B1 /* Pods_WhatToEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */; };
+		A61A1FAC8A24443BCA83C92B /* Pods_WhatToEatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5FD51D66DF01C33FF76917 /* Pods_WhatToEatUITests.framework */; };
+		DAD3D30C0518E806D4F32A9E /* Pods_WhatToEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B4474A24DD54B0EC3797FFC /* Pods-WhatToEat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat.release.xcconfig"; sourceTree = "<group>"; };
+		237C5F3A03A265300FFB4EAA /* Pods-WhatToEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat.debug.xcconfig"; sourceTree = "<group>"; };
+		48EE408973E97DC7C439B947 /* Pods-WhatToEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatTests/Pods-WhatToEatTests.release.xcconfig"; sourceTree = "<group>"; };
+		71BD406341B1354A2B84906C /* Pods-WhatToEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatTests/Pods-WhatToEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		802CBB13207D2077002EFFB1 /* WhatToEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802CBB16207D2077002EFFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802CBB18207D2077002EFFB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +58,11 @@
 		802CBB36207D207A002EFFB1 /* WhatToEatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatUITests.swift; sourceTree = "<group>"; };
 		802CBB38207D207A002EFFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF5B72B433C6CA43FCB44297 /* Pods-WhatToEatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatUITests/Pods-WhatToEatUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB88A6AFB160D9E55AB5C228 /* Pods-WhatToEatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatUITests/Pods-WhatToEatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF5FD51D66DF01C33FF76917 /* Pods_WhatToEatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A548305C31099790CEDB68B1 /* Pods_WhatToEat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD3D30C0518E806D4F32A9E /* Pods_WhatToEatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61A1FAC8A24443BCA83C92B /* Pods_WhatToEatUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21E719544CB27A8E35503B7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */,
+				EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */,
+				FF5FD51D66DF01C33FF76917 /* Pods_WhatToEatUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76C4BC625A425DC0AFCEB4E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				237C5F3A03A265300FFB4EAA /* Pods-WhatToEat.debug.xcconfig */,
+				1B4474A24DD54B0EC3797FFC /* Pods-WhatToEat.release.xcconfig */,
+				71BD406341B1354A2B84906C /* Pods-WhatToEatTests.debug.xcconfig */,
+				48EE408973E97DC7C439B947 /* Pods-WhatToEatTests.release.xcconfig */,
+				EB88A6AFB160D9E55AB5C228 /* Pods-WhatToEatUITests.debug.xcconfig */,
+				DF5B72B433C6CA43FCB44297 /* Pods-WhatToEatUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		802CBB0A207D2077002EFFB1 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +123,8 @@
 				802CBB2A207D207A002EFFB1 /* WhatToEatTests */,
 				802CBB35207D207A002EFFB1 /* WhatToEatUITests */,
 				802CBB14207D2077002EFFB1 /* Products */,
+				76C4BC625A425DC0AFCEB4E4 /* Pods */,
+				21E719544CB27A8E35503B7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802CBB3B207D207A002EFFB1 /* Build configuration list for PBXNativeTarget "WhatToEat" */;
 			buildPhases = (
+				87CC81ADE140B6ACAB894DBB /* [CP] Check Pods Manifest.lock */,
 				802CBB0F207D2077002EFFB1 /* Sources */,
 				802CBB10207D2077002EFFB1 /* Frameworks */,
 				802CBB11207D2077002EFFB1 /* Resources */,
+				CA57EB9692B6C6517B71B223 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802CBB3E207D207A002EFFB1 /* Build configuration list for PBXNativeTarget "WhatToEatTests" */;
 			buildPhases = (
+				39F87FC45BEF627B23EF3FB4 /* [CP] Check Pods Manifest.lock */,
 				802CBB23207D207A002EFFB1 /* Sources */,
 				802CBB24207D207A002EFFB1 /* Frameworks */,
 				802CBB25207D207A002EFFB1 /* Resources */,
@@ -180,6 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802CBB41207D207A002EFFB1 /* Build configuration list for PBXNativeTarget "WhatToEatUITests" */;
 			buildPhases = (
+				05AA116775C99ABC961DAAA9 /* [CP] Check Pods Manifest.lock */,
 				802CBB2E207D207A002EFFB1 /* Sources */,
 				802CBB2F207D207A002EFFB1 /* Frameworks */,
 				802CBB30207D207A002EFFB1 /* Resources */,
@@ -263,6 +307,83 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05AA116775C99ABC961DAAA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToEatUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39F87FC45BEF627B23EF3FB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToEatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87CC81ADE140B6ACAB894DBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToEat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA57EB9692B6C6517B71B223 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		802CBB0F207D2077002EFFB1 /* Sources */ = {
@@ -444,15 +565,13 @@
 		};
 		802CBB3C207D207A002EFFB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 237C5F3A03A265300FFB4EAA /* Pods-WhatToEat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -462,15 +581,13 @@
 		};
 		802CBB3D207D207A002EFFB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B4474A24DD54B0EC3797FFC /* Pods-WhatToEat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -480,17 +597,14 @@
 		};
 		802CBB3F207D207A002EFFB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71BD406341B1354A2B84906C /* Pods-WhatToEatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -501,17 +615,14 @@
 		};
 		802CBB40207D207A002EFFB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48EE408973E97DC7C439B947 /* Pods-WhatToEatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -522,16 +633,13 @@
 		};
 		802CBB42207D207A002EFFB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB88A6AFB160D9E55AB5C228 /* Pods-WhatToEatUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -542,16 +650,13 @@
 		};
 		802CBB43207D207A002EFFB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF5B72B433C6CA43FCB44297 /* Pods-WhatToEatUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
