@@ -1,20 +1,33 @@
 PODS:
+  - GoogleMaps (2.6.0):
+    - GoogleMaps/Maps (= 2.6.0)
+  - GoogleMaps/Base (2.6.0)
+  - GoogleMaps/Maps (2.6.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.6.0):
+    - GoogleMaps/Base (= 2.6.0)
   - Koloda (4.3.1):
     - pop (~> 1.0)
   - pop (1.0.10)
 
 DEPENDENCIES:
+  - GoogleMaps
+  - GooglePlaces
   - Koloda
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - GoogleMaps
+    - GooglePlaces
     - Koloda
     - pop
 
 SPEC CHECKSUMS:
+  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
+  GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
   Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
 
-PODFILE CHECKSUM: feaed1e943641ba232224c703a3b0b7854d5566f
+PODFILE CHECKSUM: 8a9586151c69ceb70d8ade9bd129c66c6ed001c9
 
 COCOAPODS: 1.5.0
