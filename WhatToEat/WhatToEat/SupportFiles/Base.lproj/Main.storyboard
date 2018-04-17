@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BUn-ck-bVA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="12a-c7-HmZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -190,7 +190,7 @@
                     <viewLayoutGuide key="safeArea" id="dCY-D2-waY"/>
                 </scrollView>
             </objects>
-            <point key="canvasLocation" x="139.13043478260872" y="132.88043478260872"/>
+            <point key="canvasLocation" x="110" y="23"/>
         </scene>
         <!--Dish Detail View Controller-->
         <scene sceneID="uCX-uG-Z3f">
@@ -334,11 +334,88 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1t-Oo-3Y5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.60000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="839" y="23"/>
+        </scene>
+        <!--My Koloda View Controller-->
+        <scene sceneID="PF3-uT-RCe">
+            <objects>
+                <viewController id="12a-c7-HmZ" customClass="MyKolodaViewController" customModule="WhatToEat" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9D8-hd-9gh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vyh-ac-A8H" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="16" y="59" width="343" height="344"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="2Zi-kL-mfl">
+                                <rect key="frame" x="55" y="477" width="265" height="102"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Woc-u8-OJH">
+                                        <rect key="frame" x="0.0" y="26" width="44.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="dislikeButton"/>
+                                        <connections>
+                                            <action selector="dislikeAction:" destination="12a-c7-HmZ" eventType="touchUpInside" id="0RI-k3-YiS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93h-dV-AMt">
+                                        <rect key="frame" x="87.5" y="0.0" width="90" height="102"/>
+                                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="77"/>
+                                        <state key="normal" title="Go">
+                                            <color key="titleColor" red="1" green="0.1910361263" blue="0.28360253079999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zsr-A8-T4t">
+                                        <rect key="frame" x="220.5" y="26" width="44.5" height="50"/>
+                                        <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                        <inset key="contentEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="+" image="likeButton"/>
+                                        <connections>
+                                            <action selector="likeAction:" destination="12a-c7-HmZ" eventType="touchUpInside" id="SVK-Jo-jjh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vyh-ac-A8H" firstAttribute="leading" secondItem="Ehc-yX-pgg" secondAttribute="leading" constant="16" id="EIf-bq-hLG"/>
+                            <constraint firstItem="2Zi-kL-mfl" firstAttribute="top" secondItem="vyh-ac-A8H" secondAttribute="bottom" constant="74" id="PF0-B2-kQ3"/>
+                            <constraint firstItem="Ehc-yX-pgg" firstAttribute="trailing" secondItem="vyh-ac-A8H" secondAttribute="trailing" constant="16" id="aG4-4j-9Yx"/>
+                            <constraint firstItem="Ehc-yX-pgg" firstAttribute="bottom" secondItem="2Zi-kL-mfl" secondAttribute="bottom" constant="88" id="cex-as-2oY"/>
+                            <constraint firstItem="Ehc-yX-pgg" firstAttribute="trailing" secondItem="2Zi-kL-mfl" secondAttribute="trailing" constant="55" id="f2q-hU-Ng7"/>
+                            <constraint firstItem="2Zi-kL-mfl" firstAttribute="leading" secondItem="Ehc-yX-pgg" secondAttribute="leading" constant="55" id="lvF-p9-obQ"/>
+                            <constraint firstItem="vyh-ac-A8H" firstAttribute="top" secondItem="Ehc-yX-pgg" secondAttribute="top" constant="39" id="sAA-JT-yCz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ehc-yX-pgg"/>
+                    </view>
+                    <connections>
+                        <outlet property="dislike" destination="Woc-u8-OJH" id="Cn2-Pd-tyg"/>
+                        <outlet property="go" destination="93h-dV-AMt" id="2MP-36-M7D"/>
+                        <outlet property="kolodaView" destination="vyh-ac-A8H" id="vMB-2w-ODV"/>
+                        <outlet property="like" destination="Zsr-A8-T4t" id="klL-13-duM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2O9-aO-sMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1750" y="23"/>
         </scene>
     </scenes>
     <resources>
         <image name="Sakanaya_roll" width="1000" height="625"/>
+        <image name="dislikeButton" width="50" height="50"/>
+        <image name="likeButton" width="50" height="50"/>
         <image name="login" width="1024" height="1024"/>
     </resources>
     <color key="tintColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
