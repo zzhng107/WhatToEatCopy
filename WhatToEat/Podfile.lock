@@ -1,20 +1,28 @@
 PODS:
   - Koloda (4.3.1):
     - pop (~> 1.0)
+  - KSSwipeStack (0.4.3):
+    - RxSwift
   - pop (1.0.10)
+  - RxSwift (4.1.2)
 
 DEPENDENCIES:
-  - Koloda
+  - Koloda (~> 4.3.1)
+  - KSSwipeStack
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Koloda
+    - KSSwipeStack
     - pop
+    - RxSwift
 
 SPEC CHECKSUMS:
   Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
+  KSSwipeStack: e378571f132e24bdaabb2208a71ac8f9a44cb5b2
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: feaed1e943641ba232224c703a3b0b7854d5566f
+PODFILE CHECKSUM: 26d9aedb58daf9277ea640294290fbc9b657995b
 
 COCOAPODS: 1.5.0

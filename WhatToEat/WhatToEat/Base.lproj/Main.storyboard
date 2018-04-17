@@ -144,6 +144,9 @@
                                                                         <real key="value" value="7"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <segue destination="gPp-TC-pP0" kind="show" id="Ox1-EC-vgL"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -192,8 +195,103 @@
             </objects>
             <point key="canvasLocation" x="139.13043478260872" y="132.88043478260872"/>
         </scene>
+        <!--My Koloda View Controller-->
+        <scene sceneID="qTL-gT-q8Y">
+            <objects>
+                <viewController id="gPp-TC-pP0" customClass="MyKolodaViewController" customModule="WhatToEat" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zhy-xG-ZIO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="q7P-Ry-yIy" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="16" y="59" width="343" height="344"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="9v3-cn-eOr">
+                                <rect key="frame" x="55" y="477" width="265" height="102"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hh3-96-3rG">
+                                        <rect key="frame" x="0.0" y="26" width="44.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="dislikeButton"/>
+                                        <connections>
+                                            <action selector="dislikeAction:" destination="gPp-TC-pP0" eventType="touchUpInside" id="Tgv-ha-6mR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTW-rS-cZN">
+                                        <rect key="frame" x="87.5" y="0.0" width="90" height="102"/>
+                                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="77"/>
+                                        <state key="normal" title="Go">
+                                            <color key="titleColor" red="1" green="0.19103612629200417" blue="0.28360253080905218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="Hll-sy-S9l" kind="show" id="eJ4-mJ-mJJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEG-We-Xju">
+                                        <rect key="frame" x="220.5" y="26" width="44.5" height="50"/>
+                                        <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
+                                        <inset key="contentEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="+" image="likeButton"/>
+                                        <connections>
+                                            <action selector="likeAction:" destination="gPp-TC-pP0" eventType="touchUpInside" id="F4p-wd-qyY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9v3-cn-eOr" firstAttribute="top" secondItem="q7P-Ry-yIy" secondAttribute="bottom" constant="74" id="0E7-R4-kQS"/>
+                            <constraint firstItem="q7P-Ry-yIy" firstAttribute="leading" secondItem="qXG-Ga-Vea" secondAttribute="leading" constant="16" id="3jI-15-GEU"/>
+                            <constraint firstItem="qXG-Ga-Vea" firstAttribute="trailing" secondItem="9v3-cn-eOr" secondAttribute="trailing" constant="55" id="Dkw-Hx-Gk7"/>
+                            <constraint firstItem="q7P-Ry-yIy" firstAttribute="top" secondItem="qXG-Ga-Vea" secondAttribute="top" constant="39" id="DnI-de-0Cy"/>
+                            <constraint firstItem="qXG-Ga-Vea" firstAttribute="bottom" secondItem="9v3-cn-eOr" secondAttribute="bottom" constant="88" id="T2t-Bf-S45"/>
+                            <constraint firstItem="9v3-cn-eOr" firstAttribute="leading" secondItem="qXG-Ga-Vea" secondAttribute="leading" constant="55" id="XHe-N9-qjJ"/>
+                            <constraint firstItem="qXG-Ga-Vea" firstAttribute="trailing" secondItem="q7P-Ry-yIy" secondAttribute="trailing" constant="16" id="ig1-eB-UTg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qXG-Ga-Vea"/>
+                    </view>
+                    <connections>
+                        <outlet property="dislike" destination="hh3-96-3rG" id="F40-Hd-e8J"/>
+                        <outlet property="go" destination="fTW-rS-cZN" id="D4q-yi-Bsp"/>
+                        <outlet property="kolodaView" destination="q7P-Ry-yIy" id="vGQ-e9-Iws"/>
+                        <outlet property="like" destination="nEG-We-Xju" id="k3l-9O-O7s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8iX-DE-SzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.79999999999995" y="-143.47826086956522"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vTM-cu-bXO">
+            <objects>
+                <viewController id="Hll-sy-S9l" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cyn-AK-nXu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HuI-9F-kyo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZIU-Nb-xw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="611"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="dislikeButton" width="50" height="50"/>
+        <image name="likeButton" width="50" height="50"/>
         <image name="login" width="1024" height="1024"/>
     </resources>
     <color key="tintColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

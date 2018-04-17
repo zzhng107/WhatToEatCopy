@@ -10,13 +10,16 @@
 		802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB16207D2077002EFFB1 /* AppDelegate.swift */; };
 		802CBB19207D2077002EFFB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB18207D2077002EFFB1 /* ViewController.swift */; };
 		802CBB1C207D2077002EFFB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802CBB1A207D2077002EFFB1 /* Main.storyboard */; };
-		802CBB1E207D207A002EFFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802CBB1D207D207A002EFFB1 /* Assets.xcassets */; };
 		802CBB21207D207A002EFFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802CBB1F207D207A002EFFB1 /* LaunchScreen.storyboard */; };
 		802CBB2C207D207A002EFFB1 /* WhatToEatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB2B207D207A002EFFB1 /* WhatToEatTests.swift */; };
 		802CBB37207D207A002EFFB1 /* WhatToEatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB36207D207A002EFFB1 /* WhatToEatUITests.swift */; };
 		802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB47207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB48207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
+		822CA4082080069700FD42F0 /* DietHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA4072080069700FD42F0 /* DietHistoryController.swift */; };
+		829C7285207FB184003D619B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829C7284207FB183003D619B /* Assets.xcassets */; };
+		82A04F71207F044900C40074 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A04F70207F044900C40074 /* MainPageViewController.swift */; };
+		82A04F75207F295A00C40074 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A04F74207F295A00C40074 /* OverlayView.swift */; };
 		A548305C31099790CEDB68B1 /* Pods_WhatToEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */; };
 		A61A1FAC8A24443BCA83C92B /* Pods_WhatToEatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5FD51D66DF01C33FF76917 /* Pods_WhatToEatUITests.framework */; };
 		DAD3D30C0518E806D4F32A9E /* Pods_WhatToEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */; };
@@ -48,7 +51,6 @@
 		802CBB16207D2077002EFFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802CBB18207D2077002EFFB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		802CBB1B207D2077002EFFB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		802CBB1D207D207A002EFFB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		802CBB20207D207A002EFFB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		802CBB22207D207A002EFFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802CBB27207D207A002EFFB1 /* WhatToEatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatToEatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,10 @@
 		802CBB36207D207A002EFFB1 /* WhatToEatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatUITests.swift; sourceTree = "<group>"; };
 		802CBB38207D207A002EFFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
+		822CA4072080069700FD42F0 /* DietHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietHistoryController.swift; sourceTree = "<group>"; };
+		829C7284207FB183003D619B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82A04F70207F044900C40074 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		82A04F74207F295A00C40074 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5B72B433C6CA43FCB44297 /* Pods-WhatToEatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatUITests/Pods-WhatToEatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,13 +147,15 @@
 		802CBB15207D2077002EFFB1 /* WhatToEat */ = {
 			isa = PBXGroup;
 			children = (
+				829C7284207FB183003D619B /* Assets.xcassets */,
 				802CBB44207D40A1002EFFB1 /* CustomViews */,
 				802CBB16207D2077002EFFB1 /* AppDelegate.swift */,
 				802CBB18207D2077002EFFB1 /* ViewController.swift */,
+				82A04F70207F044900C40074 /* MainPageViewController.swift */,
 				802CBB1A207D2077002EFFB1 /* Main.storyboard */,
-				802CBB1D207D207A002EFFB1 /* Assets.xcassets */,
 				802CBB1F207D207A002EFFB1 /* LaunchScreen.storyboard */,
 				802CBB22207D207A002EFFB1 /* Info.plist */,
+				822CA4072080069700FD42F0 /* DietHistoryController.swift */,
 			);
 			path = WhatToEat;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */,
+				82A04F74207F295A00C40074 /* OverlayView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -287,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				802CBB21207D207A002EFFB1 /* LaunchScreen.storyboard in Resources */,
-				802CBB1E207D207A002EFFB1 /* Assets.xcassets in Resources */,
+				829C7285207FB184003D619B /* Assets.xcassets in Resources */,
 				802CBB1C207D2077002EFFB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,12 +379,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KSSwipeStack/KSSwipeStack.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KSSwipeStack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,7 +403,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A04F71207F044900C40074 /* MainPageViewController.swift in Sources */,
 				802CBB19207D2077002EFFB1 /* ViewController.swift in Sources */,
+				822CA4082080069700FD42F0 /* DietHistoryController.swift in Sources */,
+				82A04F75207F295A00C40074 /* OverlayView.swift in Sources */,
 				802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */,
 				802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */,
 			);
@@ -571,7 +587,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -587,7 +606,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -604,7 +626,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -622,7 +648,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -639,7 +669,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -656,7 +690,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8MPG5B54;
 				INFOPLIST_FILE = WhatToEatUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengy-cc.WhatToEatUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
