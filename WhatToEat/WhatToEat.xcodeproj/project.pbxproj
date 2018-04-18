@@ -10,6 +10,9 @@
 		24AD832F207EF2E80040DBD0 /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD832E207EF2E80040DBD0 /* DishDetailViewController.swift */; };
 		24AD8331207EFC550040DBD0 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD8330207EFC550040DBD0 /* RatingControl.swift */; };
 		24AD83392086908E0040DBD0 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD83382086908E0040DBD0 /* MainPageViewController.swift */; };
+		24AD833B2086D0450040DBD0 /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD833A2086D0450040DBD0 /* DishTableViewCell.swift */; };
+		24AD833E2086D9220040DBD0 /* DishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD833D2086D9220040DBD0 /* DishListTableViewController.swift */; };
+		24AD83402086DB480040DBD0 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD833F2086DB480040DBD0 /* Dish.swift */; };
 		802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB16207D2077002EFFB1 /* AppDelegate.swift */; };
 		802CBB19207D2077002EFFB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB18207D2077002EFFB1 /* LoginViewController.swift */; };
 		802CBB1C207D2077002EFFB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802CBB1A207D2077002EFFB1 /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		24AD832E207EF2E80040DBD0 /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		24AD8330207EFC550040DBD0 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		24AD83382086908E0040DBD0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		24AD833A2086D0450040DBD0 /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
+		24AD833D2086D9220040DBD0 /* DishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListTableViewController.swift; sourceTree = "<group>"; };
+		24AD833F2086DB480040DBD0 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		48EE408973E97DC7C439B947 /* Pods-WhatToEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatTests/Pods-WhatToEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		71BD406341B1354A2B84906C /* Pods-WhatToEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatTests/Pods-WhatToEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		802CBB13207D2077002EFFB1 /* WhatToEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,7 @@
 				24AD83382086908E0040DBD0 /* MainPageViewController.swift */,
 				802CBB18207D2077002EFFB1 /* LoginViewController.swift */,
 				24AD832E207EF2E80040DBD0 /* DishDetailViewController.swift */,
+				24AD833D2086D9220040DBD0 /* DishListTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +144,14 @@
 				802CBB44207D40A1002EFFB1 /* CustomViews */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		24AD833C2086D8910040DBD0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24AD833F2086DB480040DBD0 /* Dish.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		76C4BC625A425DC0AFCEB4E4 /* Pods */ = {
@@ -177,6 +192,7 @@
 		802CBB15207D2077002EFFB1 /* WhatToEat */ = {
 			isa = PBXGroup;
 			children = (
+				24AD833C2086D8910040DBD0 /* Models */,
 				24AD832D207EED320040DBD0 /* Views */,
 				24AD832C207EECFF0040DBD0 /* SupportFiles */,
 				24AD832B207EECED0040DBD0 /* Controllers */,
@@ -207,6 +223,7 @@
 			children = (
 				802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */,
 				24AD8330207EFC550040DBD0 /* RatingControl.swift */,
+				24AD833A2086D0450040DBD0 /* DishTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -444,11 +461,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24AD833B2086D0450040DBD0 /* DishTableViewCell.swift in Sources */,
 				802CBB19207D2077002EFFB1 /* LoginViewController.swift in Sources */,
 				802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */,
 				802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */,
 				24AD8331207EFC550040DBD0 /* RatingControl.swift in Sources */,
+				24AD833E2086D9220040DBD0 /* DishListTableViewController.swift in Sources */,
 				24AD83392086908E0040DBD0 /* MainPageViewController.swift in Sources */,
+				24AD83402086DB480040DBD0 /* Dish.swift in Sources */,
 				24AD832F207EF2E80040DBD0 /* DishDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
