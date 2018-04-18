@@ -11,26 +11,24 @@ import XCTest
 
 class WhatToEatTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testDishInitialization() {
+        
+        //Initialize succeeds
+        let dish0 = Dish.init(name: "Dish0", photo: nil, rating: 0)
+        XCTAssertNotNil(dish0)
+        
+        let dish1 = Dish.init(name: "Dish1", photo: nil, rating: 1)
+        XCTAssertNotNil(dish1)
+        
+        //Initialize fails
+        let dishNil0 = Dish.init(name: "Nil", photo: nil, rating: -1)
+        XCTAssertNil(dishNil0)
+        
+        let dishNil1 = Dish.init(name: "Nil", photo: nil, rating: 6)
+        XCTAssertNil(dishNil1)
+        
+        let dishNil2 = Dish.init(name: "", photo: nil, rating: 1)
+        XCTAssertNil(dishNil2)
     }
     
 }
