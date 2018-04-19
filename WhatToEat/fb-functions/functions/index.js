@@ -100,3 +100,16 @@ exports.gethist = functions.https.onRequest((req, res) => {
     }).catch(() => {return;});
 
 });
+
+exports.ratedish = functions.https.onRequest((req, res) => {
+    let userId= req.body.userId;
+    let histId= req.body.histId;
+    let rating= req.body.rating;
+    let histRecordRef = firebase.database().ref('users').child(userId).child("hist").child(histId);
+    
+    let updates = {};
+    updates['rating'] = rating; 
+    histRecordRef.update(updates);
+    res.status(200).json({message:'updated'});
+
+});
