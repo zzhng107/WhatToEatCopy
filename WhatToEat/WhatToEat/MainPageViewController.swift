@@ -8,7 +8,10 @@
 
 import Koloda
 
-private var numberOfCards: Int = 8
+fileprivate var dataSource: [UIImage] = []
+private var numberOfCards: Int = 20
+
+private var imgList: [String] = []
 
 class MyKolodaViewController: UIViewController {
     
@@ -41,54 +44,93 @@ class MyKolodaViewController: UIViewController {
     
     
     
+
     
-    fileprivate var dataSource: [UIImage] = {
-        var array: [UIImage] = []
-        let urls = [URL(string: "https://i.ndtvimg.com/i/2016-06/chinese-625_625x350_81466064119.jpg"),
-                    URL(string: "https://www.seriouseats.com/recipes/images/2017/06/20170617-bulgogi-burger-matt-clifton-1-1500x1125.jpg"),
-                    URL(string: "https://cdn-images-1.medium.com/max/1600/1*xoMh1motSFtZ5yodvEeEYA.jpeg"),
-                    URL(string: "https://cdn.vox-cdn.com/uploads/chorus_image/image/49266033/eatersea0416_mendozas_market_yelp_mendozas_m.0.0.jpg"),
-                    URL(string: "https://i.ndtvimg.com/i/2016-06/chinese-625_625x350_81466064119.jpg"),
-                    URL(string: "https://www.seriouseats.com/recipes/images/2017/06/20170617-bulgogi-burger-matt-clifton-1-1500x1125.jpg"),
-                    URL(string: "https://cdn-images-1.medium.com/max/1600/1*xoMh1motSFtZ5yodvEeEYA.jpeg"),
-                    URL(string: "https://cdn.vox-cdn.com/uploads/chorus_image/image/49266033/eatersea0416_mendozas_market_yelp_mendozas_m.0.0.jpg"),
-                    URL(string: "http://i.imgur.com/w5rkSIj.jpg")]
-        
-        for index in 0..<numberOfCards {
-            
-            let url = urls[index]
-            let data = try? Data(contentsOf: url!)
-            
-            if let imageData = data {
-                let image = UIImage(data: imageData)
-                array.append(image!)
-            }
-            
-//            array.append(UIImage(named: "Card_like_\(index + 1)")!)
+    
+    func loadDishes(_ urlString: String, withCompletion completion: @escaping ()->()) {
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let userId = [
+            "userId": "5a2dbb53af64cc0021027198",
+            ]
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: userId, options: .prettyPrinted)
+        }catch{
+            print("error in first catch")
         }
         
-        return array
-    }()
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            guard let data = data, error == nil else{
+                print("error=\(error)")
+                return
+            }
+            
+            do{
+                if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
+                    for (_, val) in (output["dishes"] as? [String: AnyObject])!{
+                        imgList.append(val["imgUrl"] as! String)
+                    }
+                    completion()
+                }
+            }catch{
+                print("error in second catch")
+            }
+        }
+        task.resume()
+        
+    }
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        kolodaView.dataSource = self
-        kolodaView.delegate = self
         
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         
-//        self.user_avatar.layer.borderWidth = 1.0
-//        user_avatar.layer.masksToBounds = false
-//        self.user_avatar.layer.borderColor = UIColor.white.cgColor
-//        self.user_avatar.layer.cornerRadius = self.user_avatar.frame.size.width / 2
-//        self.user_avatar.clipsToBounds = true
         
-//        user_avatar.layer.cornerRadius = 8.0
-//        user_avatar.clipsToBounds = true
-//        user_avatar.contentMode = .scaleAspectFit;
+        DispatchQueue.global(qos: .background).async {
+            
+            
+            DispatchQueue.main.async {
+                // Run UI Updates or call completion block
+            }
+        }
+        
+        loadDishes("https://us-central1-whattoeat-9712f.cloudfunctions.net/dishes"){()->() in
+                var array: [UIImage] = []
+            
+                let urls = imgList.map({
+                    (url: String) -> URL in
+                    return URL(string: url)!
+                })
+            
+                for index in 0..<numberOfCards {
+                    
+                    let url = urls[index]
+                    let data = try? Data(contentsOf: url)
+                    
+                    if let imageData = data {
+                        let image = UIImage(data: imageData)
+                        array.append(image!)
+                    }
+                }
+                dataSource = array
+                print(dataSource)
+            
+            self.kolodaView.dataSource = self
+            self.kolodaView.delegate = self
+        }
+        
+
+        
+        
     }
+    
+
+    
+    
     
 }
 
@@ -120,6 +162,8 @@ extension MyKolodaViewController: KolodaViewDataSource {
         out.clipsToBounds = true
         out.contentMode = .scaleAspectFill;
 
+        print("img loaded")
+        
         return out
     }
     
