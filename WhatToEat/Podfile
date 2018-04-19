@@ -9,6 +9,8 @@ target 'WhatToEat' do
   pod "Koloda"
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'WhatToEatTests' do
     inherit! :search_paths
