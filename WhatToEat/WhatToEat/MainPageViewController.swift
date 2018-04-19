@@ -12,18 +12,34 @@ private var numberOfCards: Int = 8
 
 class MyKolodaViewController: UIViewController {
     
+    @IBOutlet weak var sideBar: UIStackView!
     @IBOutlet weak var kolodaView: KolodaView!
+    
+    @IBOutlet weak var go: UIButton!
     @IBOutlet weak var like: UIButton!
+    @IBOutlet weak var dislike: UIButton!
     @IBAction func likeAction(_ sender: Any) {
         kolodaView?.swipe(.right)
     }
-    @IBOutlet weak var go: UIButton!
-//    go.setImage(UIImage(named: "nameOfImage.png"), forState: UIControlState.Normal)
-
-    @IBOutlet weak var dislike: UIButton!
     @IBAction func dislikeAction(_ sender: Any) {
         kolodaView?.swipe(.left)
     }
+    
+    var sideBarShow = false
+    @IBOutlet weak var sideBarLeading: NSLayoutConstraint!
+    @IBAction func sideBarButton(_ sender: Any) {
+        sideBarShow = !sideBarShow
+        if sideBarShow {
+            sideBarLeading.constant = 0
+        }else{
+            sideBarLeading.constant = -175
+        }
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:{
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    
     
     
     fileprivate var dataSource: [UIImage] = {
@@ -62,21 +78,18 @@ class MyKolodaViewController: UIViewController {
         kolodaView.delegate = self
         
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        
+//        self.user_avatar.layer.borderWidth = 1.0
+//        user_avatar.layer.masksToBounds = false
+//        self.user_avatar.layer.borderColor = UIColor.white.cgColor
+//        self.user_avatar.layer.cornerRadius = self.user_avatar.frame.size.width / 2
+//        self.user_avatar.clipsToBounds = true
+        
+//        user_avatar.layer.cornerRadius = 8.0
+//        user_avatar.clipsToBounds = true
+//        user_avatar.contentMode = .scaleAspectFit;
     }
     
-    
-//    // MARK: IBActions
-//    @IBAction func leftButtonTapped() {
-//        kolodaView?.swipe(.left)
-//    }
-//
-//    @IBAction func rightButtonTapped() {
-//        kolodaView?.swipe(.right)
-//    }
-//
-//    @IBAction func undoButtonTapped() {
-//        kolodaView?.revertAction()
-//    }
 }
 
 
@@ -102,6 +115,7 @@ extension MyKolodaViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let out = UIImageView(image: dataSource[Int(index)])
+        
         out.layer.cornerRadius = 8.0
         out.clipsToBounds = true
         out.contentMode = .scaleAspectFill;
