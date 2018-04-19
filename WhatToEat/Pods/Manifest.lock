@@ -1,4 +1,23 @@
 PODS:
+  - Firebase/Core (4.12.0):
+    - FirebaseAnalytics (= 4.1.0)
+    - FirebaseCore (= 4.0.19)
+  - Firebase/Database (4.12.0):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.1.5)
+  - FirebaseAnalytics (4.1.0):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.19):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDatabase (4.1.5):
+    - FirebaseAnalytics (~> 4.1)
+    - FirebaseCore (~> 4.0)
+    - leveldb-library (~> 1.18)
+  - FirebaseInstanceID (2.0.10):
+    - FirebaseCore (~> 4.0)
   - GoogleMaps (2.6.0):
     - GoogleMaps/Maps (= 2.6.0)
   - GoogleMaps/Base (2.6.0)
@@ -6,28 +25,55 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.6.0):
     - GoogleMaps/Base (= 2.6.0)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - Koloda (4.3.1):
     - pop (~> 1.0)
+  - leveldb-library (1.20)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - pop (1.0.10)
 
 DEPENDENCIES:
+  - Firebase/Core
+  - Firebase/Database
   - GoogleMaps
   - GooglePlaces
   - Koloda
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
     - GoogleMaps
     - GooglePlaces
+    - GoogleToolboxForMac
     - Koloda
+    - leveldb-library
+    - nanopb
     - pop
 
 SPEC CHECKSUMS:
+  Firebase: d7fdf40e4d6c841849c52919f437fd3a0009ded0
+  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
+  FirebaseCore: ff49ebb37e0f63a570d78c4f1c1c0befe8659d5c
+  FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
+  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
 
-PODFILE CHECKSUM: 8a9586151c69ceb70d8ade9bd129c66c6ed001c9
+PODFILE CHECKSUM: e49fc85518d60ddc9e3585d57a53c35b1d675e6f
 
 COCOAPODS: 1.5.0

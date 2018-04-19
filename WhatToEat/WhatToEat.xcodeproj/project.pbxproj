@@ -13,6 +13,8 @@
 		24AD833B2086D0450040DBD0 /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD833A2086D0450040DBD0 /* DishTableViewCell.swift */; };
 		24AD833E2086D9220040DBD0 /* DishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD833D2086D9220040DBD0 /* DishListTableViewController.swift */; };
 		24AD83402086DB480040DBD0 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD833F2086DB480040DBD0 /* Dish.swift */; };
+		24AD834220883A780040DBD0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24AD834120883A770040DBD0 /* GoogleService-Info.plist */; };
+		24AD8344208842980040DBD0 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD8343208842980040DBD0 /* FirebaseUtil.swift */; };
 		802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB16207D2077002EFFB1 /* AppDelegate.swift */; };
 		802CBB19207D2077002EFFB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB18207D2077002EFFB1 /* LoginViewController.swift */; };
 		802CBB1C207D2077002EFFB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802CBB1A207D2077002EFFB1 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 		24AD833A2086D0450040DBD0 /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
 		24AD833D2086D9220040DBD0 /* DishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListTableViewController.swift; sourceTree = "<group>"; };
 		24AD833F2086DB480040DBD0 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		24AD834120883A770040DBD0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		24AD8343208842980040DBD0 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
 		48EE408973E97DC7C439B947 /* Pods-WhatToEatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatTests/Pods-WhatToEatTests.release.xcconfig"; sourceTree = "<group>"; };
 		71BD406341B1354A2B84906C /* Pods-WhatToEatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatTests/Pods-WhatToEatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		802CBB13207D2077002EFFB1 /* WhatToEat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToEat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,8 @@
 				802CBB1D207D207A002EFFB1 /* Assets.xcassets */,
 				802CBB1F207D207A002EFFB1 /* LaunchScreen.storyboard */,
 				802CBB22207D207A002EFFB1 /* Info.plist */,
+				24AD834120883A770040DBD0 /* GoogleService-Info.plist */,
+				24AD8343208842980040DBD0 /* FirebaseUtil.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				802CBB21207D207A002EFFB1 /* LaunchScreen.storyboard in Resources */,
+				24AD834220883A780040DBD0 /* GoogleService-Info.plist in Resources */,
 				802CBB1E207D207A002EFFB1 /* Assets.xcassets in Resources */,
 				802CBB1C207D2077002EFFB1 /* Main.storyboard in Resources */,
 			);
@@ -441,12 +448,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +479,7 @@
 				802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */,
 				802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */,
 				24AD8331207EFC550040DBD0 /* RatingControl.swift in Sources */,
+				24AD8344208842980040DBD0 /* FirebaseUtil.swift in Sources */,
 				24AD833E2086D9220040DBD0 /* DishListTableViewController.swift in Sources */,
 				24AD83392086908E0040DBD0 /* MainPageViewController.swift in Sources */,
 				24AD83402086DB480040DBD0 /* Dish.swift in Sources */,
@@ -647,13 +661,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 86264KNS43;
+				DEVELOPMENT_TEAM = HR63KKCHQ9;
 				INFOPLIST_FILE = "$(SRCROOT)/WhatToEat/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengyWhatToEat";
+				PRODUCT_BUNDLE_IDENTIFIER = "wte-Food.uiuc.WhatToEat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -668,13 +682,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 86264KNS43;
+				DEVELOPMENT_TEAM = HR63KKCHQ9;
 				INFOPLIST_FILE = "$(SRCROOT)/WhatToEat/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "alpaca-rara-pengyWhatToEat";
+				PRODUCT_BUNDLE_IDENTIFIER = "wte-Food.uiuc.WhatToEat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
