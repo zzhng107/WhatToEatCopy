@@ -110,6 +110,9 @@
                                                                 <state key="normal" title="Forget Password?">
                                                                     <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="handleForgetPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NXu-Bn-wX1"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -244,6 +247,14 @@
                                                     <constraint firstItem="Hgp-W5-1wn" firstAttribute="width" secondItem="jlx-nS-YH0" secondAttribute="width" id="PBH-sc-t1c"/>
                                                 </constraints>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YE-tb-7HA">
+                                                <rect key="frame" x="64" y="410" width="94" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Tmp Sign Out"/>
+                                                <connections>
+                                                    <action selector="handleTmpSignOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qbU-Cr-yJe"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

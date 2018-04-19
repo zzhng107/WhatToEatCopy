@@ -88,7 +88,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func handleFacebookSignIn(_ sender: UIButton) {
         let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [ .publicProfile ], viewController: self) { loginResult in
+        loginManager.logIn(readPermissions: [ .publicProfile, .email ], viewController: self) { loginResult in
             switch loginResult {
             case .failed(let error):
                 print(error)
@@ -96,19 +96,44 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Logged in!")
-                print(accessToken)
-//                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-//                Auth.auth().signIn(with: credential) { (user, error) in
-//                    if let error = error {
-//                        // ...
-//                        return
-//                    }
-//                    // User is signed in
-//                    // ...
-//                }
+                print(accessToken.authenticationToken)
+                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
+                Auth.auth().signIn(with: credential) { (user, error) in
+                    if let error = error {
+                        // ...
+                        return
+                    }
+                    // User is signed in
+                    // ...
+                }
             }
         }
+        
+        
     }
+    
+    @IBAction func handleForgetPassword(_ sender: UIButton) {
+        
+        guard let email = emailTextField.text else {
+            print("No email provided")
+            return
+        }
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            print(error!.localizedDescription)
+        }
+    }
+    
+    @IBAction func handleTmpSignOut(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Signed out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
 }
 
 @IBDesignable extension UIButton {
