@@ -11,6 +11,10 @@ target 'WhatToEat' do
   pod 'GooglePlaces'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 
   target 'WhatToEatTests' do
     inherit! :search_paths
