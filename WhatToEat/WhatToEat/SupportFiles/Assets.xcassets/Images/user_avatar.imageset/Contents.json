@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "new-google-favicon-512 copy.png",
+      "filename" : "512x512bb.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "512x512bb-1.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "512x512bb-2.jpg",
       "scale" : "3x"
     }
   ],
