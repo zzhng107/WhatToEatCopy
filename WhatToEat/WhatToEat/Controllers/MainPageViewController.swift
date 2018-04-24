@@ -7,6 +7,7 @@
 //
 
 import Koloda
+import Firebase
 
 fileprivate var dataSource: [UIImage] = []
 private var numberOfCards: Int = 20
@@ -42,9 +43,15 @@ class MyKolodaViewController: UIViewController {
         })
     }
     
-    
-    
-    
+    @IBAction func handleLogOut(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Signed out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
     
     func loadDishes(_ urlString: String, withCompletion completion: @escaping ()->()) {
