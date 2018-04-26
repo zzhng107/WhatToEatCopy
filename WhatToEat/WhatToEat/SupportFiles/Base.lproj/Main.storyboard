@@ -15,7 +15,7 @@
         <!--Dish Detail View Controller-->
         <scene sceneID="uCX-uG-Z3f">
             <objects>
-                <viewController id="BUn-ck-bVA" customClass="DishDetailViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dishDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BUn-ck-bVA" customClass="DishDetailViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c4e-JQ-Ss8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1t-Oo-3Y5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="266"/>
+            <point key="canvasLocation" x="1738" y="260"/>
         </scene>
         <!--Dish List Table View Controller-->
         <scene sceneID="b0x-r3-tIA">
@@ -191,13 +191,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon Dec 11 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT5-N5-uGp">
-                                                    <rect key="frame" x="25" y="8" width="130" height="21"/>
+                                                    <rect key="frame" x="18" y="8" width="130" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1JT-m8-Nhw" customClass="RatingControl" customModule="WhatToEat" customModuleProvider="target">
-                                                    <rect key="frame" x="178" y="8" width="132" height="20"/>
+                                                    <rect key="frame" x="156" y="8" width="132" height="20"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="size" keyPath="itemSize">
                                                             <size key="value" width="20" height="20"/>
@@ -208,7 +208,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dish Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGh-27-r4J">
-                                                    <rect key="frame" x="25" y="267" width="84" height="21"/>
+                                                    <rect key="frame" x="18" y="267" width="84" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -220,12 +220,23 @@
                                                         <constraint firstAttribute="width" constant="24" id="dj8-Nd-Y7G"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="info"/>
+                                                    <connections>
+                                                        <action selector="detailButtonOnClick:" destination="cQi-tZ-S7H" eventType="touchUpInside" id="p2Q-cx-Dh1"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cJ-Gp-ShH">
+                                                    <rect key="frame" x="300" y="6" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="PGy-Vq-nxa"/>
+                                                        <constraint firstAttribute="width" constant="24" id="vie-SN-uao"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="delete"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="tZI-BX-Xm0" firstAttribute="top" secondItem="1JT-m8-Nhw" secondAttribute="bottom" constant="9" id="0gL-az-ju7"/>
-                                                <constraint firstItem="FT5-N5-uGp" firstAttribute="leading" secondItem="2cb-1w-hHH" secondAttribute="leading" constant="25" id="549-Ev-AOi"/>
+                                                <constraint firstItem="FT5-N5-uGp" firstAttribute="leading" secondItem="2cb-1w-hHH" secondAttribute="leading" constant="18" id="549-Ev-AOi"/>
                                                 <constraint firstItem="tZI-BX-Xm0" firstAttribute="top" secondItem="FT5-N5-uGp" secondAttribute="bottom" constant="8" id="GX0-au-4dS"/>
                                                 <constraint firstAttribute="trailing" secondItem="tZI-BX-Xm0" secondAttribute="trailing" id="H0u-ME-Env"/>
                                                 <constraint firstItem="yGh-27-r4J" firstAttribute="top" secondItem="tZI-BX-Xm0" secondAttribute="bottom" constant="19" id="Iuz-lk-rtw"/>
@@ -233,12 +244,16 @@
                                                 <constraint firstItem="FT5-N5-uGp" firstAttribute="top" secondItem="2cb-1w-hHH" secondAttribute="top" constant="8" id="QYW-mb-BU7"/>
                                                 <constraint firstAttribute="bottom" secondItem="hmd-r6-Eoo" secondAttribute="bottom" constant="20.5" id="Qjs-Fo-AIa"/>
                                                 <constraint firstAttribute="bottom" secondItem="yGh-27-r4J" secondAttribute="bottom" constant="21.5" id="U0M-zC-Nk8"/>
+                                                <constraint firstItem="tZI-BX-Xm0" firstAttribute="top" secondItem="3cJ-Gp-ShH" secondAttribute="bottom" constant="7" id="aM8-LX-un4"/>
                                                 <constraint firstItem="1JT-m8-Nhw" firstAttribute="top" secondItem="2cb-1w-hHH" secondAttribute="top" constant="8" id="ayp-wz-FQQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="1JT-m8-Nhw" secondAttribute="trailing" constant="25" id="dAT-M9-He2"/>
+                                                <constraint firstItem="3cJ-Gp-ShH" firstAttribute="top" secondItem="2cb-1w-hHH" secondAttribute="top" constant="6" id="hUV-VB-spe"/>
+                                                <constraint firstItem="3cJ-Gp-ShH" firstAttribute="leading" secondItem="1JT-m8-Nhw" secondAttribute="trailing" constant="12" id="hvp-md-FBp"/>
                                                 <constraint firstAttribute="trailing" secondItem="hmd-r6-Eoo" secondAttribute="trailing" constant="25" id="kgG-Fz-eFG"/>
                                                 <constraint firstItem="tZI-BX-Xm0" firstAttribute="leading" secondItem="2cb-1w-hHH" secondAttribute="leading" id="oLK-Xp-7sA"/>
                                                 <constraint firstItem="tZI-BX-Xm0" firstAttribute="top" secondItem="FT5-N5-uGp" secondAttribute="bottom" constant="8" id="wc7-aH-V4t"/>
-                                                <constraint firstItem="yGh-27-r4J" firstAttribute="leading" secondItem="2cb-1w-hHH" secondAttribute="leading" constant="25" id="zea-P7-7l3"/>
+                                                <constraint firstItem="1JT-m8-Nhw" firstAttribute="leading" secondItem="FT5-N5-uGp" secondAttribute="trailing" constant="8" id="xPW-Fk-9QN"/>
+                                                <constraint firstAttribute="trailing" secondItem="3cJ-Gp-ShH" secondAttribute="trailing" constant="11" id="ylH-Bd-NzI"/>
+                                                <constraint firstItem="yGh-27-r4J" firstAttribute="leading" secondItem="2cb-1w-hHH" secondAttribute="leading" constant="18" id="zea-P7-7l3"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -253,7 +268,7 @@
                                     <outlet property="dateLabel" destination="FT5-N5-uGp" id="C6V-FI-pjG"/>
                                     <outlet property="dishNameLabel" destination="yGh-27-r4J" id="7UI-8Z-QQP"/>
                                     <outlet property="img" destination="tZI-BX-Xm0" id="88r-ha-lIy"/>
-                                    <outlet property="rateControl" destination="1JT-m8-Nhw" id="uzw-Eo-mab"/>
+                                    <outlet property="rateControl" destination="1JT-m8-Nhw" id="abJ-7f-sA4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -265,7 +280,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onl-aq-CD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-588" y="245"/>
+            <point key="canvasLocation" x="-458.39999999999998" y="242.42878560719643"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="97q-If-fy3">
@@ -478,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMl-A4-72f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="337" y="331"/>
+            <point key="canvasLocation" x="500" y="244"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="xG9-50-EUt">
@@ -1071,7 +1086,7 @@
                                                         <rect key="frame" x="44" y="0.0" width="79" height="30"/>
                                                         <state key="normal" title="Diet history"/>
                                                         <connections>
-                                                            <segue destination="fnL-ro-ik8" kind="show" id="HqR-b7-MEm"/>
+                                                            <segue destination="tw1-j0-4ye" kind="show" id="xG4-qb-j19"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1215,6 +1230,7 @@
     <resources>
         <image name="Sakanaya_roll" width="1000" height="625"/>
         <image name="burger" width="25" height="25"/>
+        <image name="delete" width="128" height="128"/>
         <image name="dislikeButton" width="50" height="50"/>
         <image name="if_facebook_circle_color_107175 copy" width="50" height="50"/>
         <image name="info" width="64" height="64"/>
@@ -1229,7 +1245,6 @@
         <image name="wechat_circle copy" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6bF-k1-fa9"/>
         <segue reference="uIu-z1-PX2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

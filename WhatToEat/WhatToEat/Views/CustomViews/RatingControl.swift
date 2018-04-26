@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol RatingControlDelegate{
+    func didTapRating(rating:Int)
+}
+
 @IBDesignable class RatingControl: UIStackView {
 
+    var delegate: RatingControlDelegate?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButtons()
@@ -115,5 +120,7 @@ import UIKit
             // Otherwise set the rating to the selected star
             rating = selectedRating
         }
+       
+        delegate?.didTapRating(rating: self.rating)
     }
 }

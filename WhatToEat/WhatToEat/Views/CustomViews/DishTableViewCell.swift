@@ -8,15 +8,27 @@
 
 import UIKit
 
-class DishTableViewCell: UITableViewCell {
+protocol DishTableViewCellDelegate{
+    func didTapRating(itemId: String,rating: Int)
+    func didTapDetailButton(restInfo:[String:AnyObject], dishImage:UIImage)
+}
+
+class DishTableViewCell: UITableViewCell,RatingControlDelegate {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var rateControl: RatingControl!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var dishNameLabel: UILabel!
     
+    var itemId:String?
+    var dishId:String?
+    var restInfo:[String:AnyObject]?
+    
+    var delegate:DishTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        rateControl.delegate = self
         // Initialization code
     }
 
@@ -26,5 +38,20 @@ class DishTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-
+    
+    @IBAction func detailButtonOnClick(_ sender: Any) {
+        if let restInfo = restInfo{
+            delegate?.didTapDetailButton(restInfo: restInfo, dishImage:img.image!)
+        }
+    }
+    
+    
+    
+    func didTapRating(rating: Int) {
+        if let itemId = itemId {
+            delegate?.didTapRating(itemId: itemId, rating: rating)
+        }
+    }
 }
+
+

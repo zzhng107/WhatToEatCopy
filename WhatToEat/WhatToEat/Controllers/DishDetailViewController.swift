@@ -20,6 +20,9 @@ class DishDetailViewController: UIViewController {
     @IBOutlet weak var ratingRate: RatingControl!
     @IBOutlet weak var mapView: GMSMapView!
     
+    
+    var restInfo:[String:AnyObject] = [:]
+    var dishImage:UIImage = UIImage()
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,20 +32,36 @@ class DishDetailViewController: UIViewController {
         
         super.viewDidLoad()
         
-        restaurantName.text = "Siam Terrace"
-        openLabel.text = "Open"
-        openLabel.textColor = UIColor(red: 0, green: 1.0, blue: 0, alpha: 1)
-        priceRate.rating = 2
-        ratingRate.rating = 4
-        
-        let camera = GMSCameraPosition.camera(withLatitude: 40.112617, longitude: -88.209419, zoom:12.0)
-        mapView.camera = camera
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 40.112617, longitude: -88.209419)
-        marker.map = mapView
-       
-       
+        if let _ = restInfo["name"]{
+            restaurantName.text = restInfo["name"] as! String
+            priceRate.rating = Int(restInfo["price"] as! Float)
+            ratingRate.rating = Int(restInfo["stars"] as! Float)
+            restaurantImage.image = dishImage
+            
+            //TODO:Set the open label and map
+            openLabel.text = "Open"
+            openLabel.textColor = UIColor(red: 0, green: 1.0, blue: 0, alpha: 1)
+            let camera = GMSCameraPosition.camera(withLatitude: 40.112617, longitude: -88.209419, zoom:12.0)
+            mapView.camera = camera
+            
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: 40.112617, longitude: -88.209419)
+            marker.map = mapView
+            
+        }else{
+            restaurantName.text = "name"
+            openLabel.text = "Open"
+            openLabel.textColor = UIColor(red: 0, green: 1.0, blue: 0, alpha: 1)
+            priceRate.rating = 0
+            ratingRate.rating = 0
+            
+            let camera = GMSCameraPosition.camera(withLatitude: 40.112617, longitude: -88.209419, zoom:12.0)
+            mapView.camera = camera
+            
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: 40.112617, longitude: -88.209419)
+            marker.map = mapView
+        }
         
     }
 
