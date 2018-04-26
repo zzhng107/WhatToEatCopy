@@ -8,27 +8,29 @@
 
 import UIKit
 import os
+import Firebase
+import FirebaseAuth
 
 class DishListTableViewController: UITableViewController{
 
     let cellSpacingHeight: CGFloat = 20
     let cardBackgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0)
-    
     let ArchiveURL = Dish.DocumentsDirectory.appendingPathComponent("historyList")
-    var userId = "4h2AcaIwckR2vzxMMuPENOq8KCg2"
+    var userId = Auth.auth().currentUser!.uid
     var dishes = [Dish]()
+    
     
     private var rawDishesData:[AnyObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = .none
-
-//        if let savedDishes = loadDishes(){
-//            dishes += savedDishes
-//        }else{
-//            loadDefaultMeals()
-//        }
+        
+        if let savedDishes = loadDishes(){
+            dishes += savedDishes
+        }else{
+            loadDefaultMeals()
+        }
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/gethist"
         loadDishesList(urlString: urlString , userId: userId){
             DispatchQueue.main.async{
@@ -106,13 +108,51 @@ class DishListTableViewController: UITableViewController{
 
 
 extension DishListTableViewController:DishTableViewCellDelegate{
+    func didTapDelteButton(itemId: String) {
+        callDeleteAPI(userId: userId, itemId: itemId){
+            let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/gethist"
+            
+            self.loadDishesList(urlString: urlString , userId: self.userId){
+                DispatchQueue.main.async{
+                    self.dishes = [Dish]()
+                    for dishData in self.rawDishesData{
+                        if let dishGeneralInfo = dishData as? [String:AnyObject]{
+                            let dishId = dishGeneralInfo["dishId"] as! String
+                            let itemId = dishGeneralInfo["itemId"] as! String
+                            let rating = dishGeneralInfo["rating"] as! Int
+                            let date = dishGeneralInfo["date"] as! String
+                            if let dishDetailInfo = dishGeneralInfo["info"] as? [String:AnyObject]{
+                                let imgUrl = dishDetailInfo["imgUrl"] as! String
+                                let url = URL(string: imgUrl)!
+                                let data = try? Data(contentsOf: url)
+                                var photo:UIImage? = nil
+                                if let imageData = data{
+                                    photo = UIImage(data: imageData)
+                                }
+                                let name = dishDetailInfo["name"] as! String
+                                let extra = ["itemId":itemId, "date":date]  as [String : AnyObject]
+                                let restInfo = dishDetailInfo["restaurant"] as! [String : AnyObject]
+                                let dish = Dish(name: name, photo: photo, rating: rating, dishId:dishId, restInfo:restInfo,extra:extra)
+                                self.dishes.append(dish!)
+                            }
+                            
+                        }
+                    }
+                    self.saveDishes()
+                    print(self.dishes.count)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     func didTapDetailButton(restInfo: [String:AnyObject], dishImage:UIImage) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "dishDetailViewController") as! DishDetailViewController
         newViewController.restInfo = restInfo
         newViewController.dishImage = dishImage
         self.navigationController?.pushViewController(newViewController, animated: true)
-       
+        
     }
     
     func didTapRating(itemId: String, rating: Int) {
@@ -158,6 +198,7 @@ extension DishListTableViewController{
             
             do{
                 if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
+                    self.rawDishesData = []
                     for (itemId, val) in (output["dishes"] as? [String: AnyObject])!{
                         
                         let nsdate = NSDate(timeIntervalSince1970: (val["dateCreated"] as! Double)/1000) as Date
@@ -236,7 +277,36 @@ extension DishListTableViewController{
             }
             
             do{
-               print("done")
+                print("done")
+            }
+        }
+        task.resume()
+    }
+    
+    private func callDeleteAPI(userId:String, itemId:String, withCompletion completion: @escaping ()->()){
+        let url = URL(string: "https://us-central1-whattoeat-9712f.cloudfunctions.net/deleteHist")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let bodyData = [
+            "userId": userId,
+            "histId": itemId
+            ] as [String : Any]
+        
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
+        }catch{
+            print("error in first catch")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            guard let data = data, error == nil else{
+                print("error=\(error!)")
+                return
+            }
+            
+            do{
+                completion()
             }
         }
         task.resume()

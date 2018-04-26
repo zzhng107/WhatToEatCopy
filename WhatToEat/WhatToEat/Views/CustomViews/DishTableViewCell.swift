@@ -11,6 +11,7 @@ import UIKit
 protocol DishTableViewCellDelegate{
     func didTapRating(itemId: String,rating: Int)
     func didTapDetailButton(restInfo:[String:AnyObject], dishImage:UIImage)
+    func didTapDelteButton(itemId: String)
 }
 
 class DishTableViewCell: UITableViewCell,RatingControlDelegate {
@@ -38,13 +39,17 @@ class DishTableViewCell: UITableViewCell,RatingControlDelegate {
         // Configure the view for the selected state
     }
     
+    @IBAction func deleteButtonOnClick(_ sender: Any) {
+        if let itemId = itemId{
+            delegate?.didTapDelteButton(itemId: itemId)
+        }
+    }
     
     @IBAction func detailButtonOnClick(_ sender: Any) {
         if let restInfo = restInfo{
             delegate?.didTapDetailButton(restInfo: restInfo, dishImage:img.image!)
         }
     }
-    
     
     
     func didTapRating(rating: Int) {

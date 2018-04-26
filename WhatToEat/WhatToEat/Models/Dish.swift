@@ -23,7 +23,7 @@ class Dish:NSObject, NSCoding{
     
    
     init?(name: String, photo: UIImage?, rating: Int, dishId: String, restInfo:[String:AnyObject], extra:[String:AnyObject] = [:]) {
-        if name.isEmpty || rating < 0 || rating > 5 {
+        if rating < 0 || rating > 5 {
             return nil
         }
         
