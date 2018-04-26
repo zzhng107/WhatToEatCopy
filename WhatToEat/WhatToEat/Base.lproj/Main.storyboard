@@ -311,6 +311,10 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goAction:" destination="gPp-TC-pP0" eventType="touchUpInside" id="Acz-p9-bZp"/>
+                                            <segue destination="Rzg-LG-aOK" kind="show" id="Pwx-IR-tBR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEG-We-Xju">
                                         <rect key="frame" x="227" y="16" width="68" height="50"/>
@@ -485,10 +489,10 @@
             </objects>
             <point key="canvasLocation" x="1884" y="-143.47826086956522"/>
         </scene>
-        <!--View Controller-->
+        <!--Temp Detail Page View Controller-->
         <scene sceneID="vTM-cu-bXO">
             <objects>
-                <viewController id="Hll-sy-S9l" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="Hll-sy-S9l" customClass="TempDetailPageViewController" customModule="WhatToEat" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cyn-AK-nXu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -499,15 +503,22 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="dishName:" destination="oov-cP-z1r" eventType="editingDidEnd" id="0cR-68-c4U"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HuI-9F-kyo"/>
                     </view>
+                    <connections>
+                        <outlet property="dishName" destination="NqO-f6-Fi6" id="Y27-NI-8v2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIU-Nb-xw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oov-cP-z1r" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1177" y="645"/>
+            <point key="canvasLocation" x="945" y="-888"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="jsX-Iz-6Y3">

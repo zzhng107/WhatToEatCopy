@@ -16,7 +16,8 @@
 		802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB47207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB48207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
-		822CA4082080069700FD42F0 /* DietHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA4072080069700FD42F0 /* DietHistoryController.swift */; };
+		82437CD9209233BD00E8E3BF /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82437CD8209233BD00E8E3BF /* MainPageController.swift */; };
+		82437CDB2092346D00E8E3BF /* TempDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82437CDA2092346D00E8E3BF /* TempDetailPageViewController.swift */; };
 		829C7285207FB184003D619B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829C7284207FB183003D619B /* Assets.xcassets */; };
 		82A04F71207F044900C40074 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A04F70207F044900C40074 /* MainPageViewController.swift */; };
 		82A04F75207F295A00C40074 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A04F74207F295A00C40074 /* OverlayView.swift */; };
@@ -60,7 +61,8 @@
 		802CBB36207D207A002EFFB1 /* WhatToEatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatUITests.swift; sourceTree = "<group>"; };
 		802CBB38207D207A002EFFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
-		822CA4072080069700FD42F0 /* DietHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietHistoryController.swift; sourceTree = "<group>"; };
+		82437CD8209233BD00E8E3BF /* MainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainPageController.swift; path = WhatToEat/MainPageController.swift; sourceTree = SOURCE_ROOT; };
+		82437CDA2092346D00E8E3BF /* TempDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDetailPageViewController.swift; sourceTree = "<group>"; };
 		829C7284207FB183003D619B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82A04F70207F044900C40074 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		82A04F74207F295A00C40074 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
@@ -154,8 +156,8 @@
 				82A04F70207F044900C40074 /* MainPageViewController.swift */,
 				802CBB1A207D2077002EFFB1 /* Main.storyboard */,
 				802CBB1F207D207A002EFFB1 /* LaunchScreen.storyboard */,
+				82437CDA2092346D00E8E3BF /* TempDetailPageViewController.swift */,
 				802CBB22207D207A002EFFB1 /* Info.plist */,
-				822CA4072080069700FD42F0 /* DietHistoryController.swift */,
 			);
 			path = WhatToEat;
 			sourceTree = "<group>";
@@ -183,6 +185,7 @@
 			children = (
 				802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */,
 				82A04F74207F295A00C40074 /* OverlayView.swift */,
+				82437CD8209233BD00E8E3BF /* MainPageController.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -404,8 +407,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A04F71207F044900C40074 /* MainPageViewController.swift in Sources */,
+				82437CDB2092346D00E8E3BF /* TempDetailPageViewController.swift in Sources */,
 				802CBB19207D2077002EFFB1 /* ViewController.swift in Sources */,
-				822CA4082080069700FD42F0 /* DietHistoryController.swift in Sources */,
+				82437CD9209233BD00E8E3BF /* MainPageController.swift in Sources */,
 				82A04F75207F295A00C40074 /* OverlayView.swift in Sources */,
 				802CBB46207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */,
 				802CBB17207D2077002EFFB1 /* AppDelegate.swift in Sources */,
