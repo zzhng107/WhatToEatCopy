@@ -63,6 +63,7 @@ exports.saveforlater = functions.https.onRequest((req, res) => {
     res.status(200).json({"message":"saved for later"});
 });
 
+
 exports.getsaveforlater = functions.https.onRequest((req, res) => {
     let userId= req.body.userId;
     let dishListRef = firebase.database().ref('users').child(userId).child("save_for_later");
@@ -87,6 +88,15 @@ exports.savehist = functions.https.onRequest((req, res) => {
         'dishId': dishId
     })
     res.status(200).json({"message":"saved in history"});
+});
+
+exports.deleteHist = functions.https.onRequest((req, res) => {
+    let userId= req.body.userId;
+    let histId= req.body.histId;
+    let histItemRef = firebase.database().ref('users').child(userId).child("hist").child(histId);
+    histItemRef.remove();
+   
+    res.status(200).json({"message":"deleted"});
 });
 
 exports.gethist = functions.https.onRequest((req, res) => {
