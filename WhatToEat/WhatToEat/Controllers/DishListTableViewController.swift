@@ -173,10 +173,13 @@ extension DishListTableViewController{
     }
     
     
-    
+//    private func loadDishesList(urlString:String,userId:String, withCompletion completion: @escaping ()->()){
+//        let bodyData = ["userId": userId]
+//        Dish.request(httpMethod: "Post", urlString: urlString, body: bodyData, withCompletion: <#T##([String : AnyObject]) -> ()#>)
+//    }
     
     private func loadDishesList(urlString:String,userId:String, withCompletion completion: @escaping ()->()){
-        
+
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -189,28 +192,28 @@ extension DishListTableViewController{
         }catch{
             print("error in first catch")
         }
-        
+
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             guard let data = data, error == nil else{
                 print("error=\(error!)")
                 return
             }
-            
+
             do{
                 if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
                     self.rawDishesData = []
                     for (itemId, val) in (output["dishes"] as? [String: AnyObject])!{
-                        
+
                         let nsdate = NSDate(timeIntervalSince1970: (val["dateCreated"] as! Double)/1000) as Date
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
                         let date = dateFormatter.string(from: nsdate)
-                        
+
                         self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:date, rating:val["rating"] as! Int){
                             completion()
                         }
                     }
-                    
+
                 }
             }catch{
                 print("error in second catch")
@@ -218,7 +221,7 @@ extension DishListTableViewController{
         }
         task.resume()
     }
-    
+
     
     
     
