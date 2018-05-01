@@ -19,6 +19,18 @@ exports.dishes = functions.https.onRequest((req, res) => {
     let dishesRef = firebase.database().ref('dishes');
     let userRef = firebase.database().ref('users').child(userId);
     
+    let get_score = function(rest_tag_dic, user_tag_dic){
+        let score = 0;
+        if(!rest_tag_dic){
+            return score
+        }
+        for(let key in rest_tag_dic){
+            if(key in user_tag_dic){      
+                score += rest_tag_dic[key] * user_tag_dic[key];
+            }
+        }
+        return score;
+    }
     
     userRef.once('value').then((userSnap) =>{
         // let userInfo = {}; 
@@ -35,10 +47,9 @@ exports.dishes = functions.https.onRequest((req, res) => {
                     break;
                 }
                 dishesInfo[key] = dishSnap.val()[key];
+                dishesInfo[key]['score'] = get_score(dishesInfo[key]['tag'], userSnap.val()['tags']);
                 count += 1;
             }
-
-            //TODO: recommendation algorithm
             
             res.status(200).json({dishes:dishesInfo});
             return;
