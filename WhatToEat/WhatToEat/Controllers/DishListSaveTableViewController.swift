@@ -100,11 +100,12 @@ extension DishListSaveTableViewController:DishTableViewCellDelegate{
         }
     }
     
-    func didTapDetailButton(restInfo: [String:AnyObject], dishImage:UIImage) {
+    func didTapDetailButton(restInfo: [String:AnyObject], dishImage:UIImage, dishId:String) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "dishDetailViewController") as! DishDetailViewController
         newViewController.restInfo = restInfo
         newViewController.dishImage = dishImage
+        newViewController.dishId = dishId
         self.navigationController?.pushViewController(newViewController, animated: true)
         
     }
@@ -200,27 +201,12 @@ extension DishListSaveTableViewController{
     }
     
     
-    
-//    private func callRateAPI(userId:String, itemId:String, rating: Int){
-//
-//        let bodyData = [
-//            "userId": userId,
-//            "histId": itemId,
-//            "rating": rating
-//            ] as [String : Any]
-//        let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/ratedish"
-//        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
-//            print("Rated")
-//        }
-//
-//    }
-    
     private func callDeleteAPI(userId:String, itemId:String, withCompletion completion: @escaping ()->()){
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/deleteSave"
         
         let bodyData = [
             "userId": userId,
-            "histId": itemId
+            "saveId": itemId
             ] as [String : Any]
         
         Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in

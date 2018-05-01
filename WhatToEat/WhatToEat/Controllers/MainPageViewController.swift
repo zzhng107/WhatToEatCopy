@@ -244,11 +244,11 @@ extension MyKolodaViewController: KolodaViewDelegate {
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
         
-        let detail = storyboard?.instantiateViewController(withIdentifier: "detail") as! TempDetailPageViewController
-        detail.dishNamePassed = dataSource[kolodaView.currentCardIndex].value["name"] as! String
-        navigationController?.pushViewController(detail, animated: true)
-        
-        //        UIApplication.shared.openURL(URL(string: "https://google.com")!)
+//        let detail = storyboard?.instantiateViewController(withIdentifier: "detail") as! TempDetailPageViewController
+//        detail.dishNamePassed = dataSource[kolodaView.currentCardIndex].value["name"] as! String
+//        navigationController?.pushViewController(detail, animated: true)
+//        
+//        //        UIApplication.shared.openURL(URL(string: "https://google.com")!)
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 protocol DishTableViewCellDelegate{
     func didTapRating(itemId: String,rating: Int)
-    func didTapDetailButton(restInfo:[String:AnyObject], dishImage:UIImage)
+    func didTapDetailButton(restInfo:[String:AnyObject], dishImage:UIImage,dishId:String)
     func didTapDelteButton(itemId: String)
 }
 
@@ -49,7 +49,7 @@ class DishTableViewCell: UITableViewCell,RatingControlDelegate {
     
     @IBAction func detailButtonOnClick(_ sender: Any) {
         if let restInfo = restInfo{
-            delegate?.didTapDetailButton(restInfo: restInfo, dishImage:img.image!)
+            delegate?.didTapDetailButton(restInfo: restInfo, dishImage:img.image!, dishId: dishId!)
         }
     }
     

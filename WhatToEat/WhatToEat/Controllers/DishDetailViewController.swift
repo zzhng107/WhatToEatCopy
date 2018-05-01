@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
+import FirebaseAuth
 
 class DishDetailViewController: UIViewController {
 
@@ -19,10 +21,23 @@ class DishDetailViewController: UIViewController {
     @IBOutlet weak var priceRate: RatingControl!
     @IBOutlet weak var ratingRate: RatingControl!
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var goButton: UIButton!
     
-    
+    var userId = Auth.auth().currentUser!.uid
     var restInfo:[String:AnyObject] = [:]
     var dishImage:UIImage = UIImage()
+    var dishId:String = ""
+    
+    @IBAction func goButtonOnClick(_ sender: Any) {
+        let bodyData = [
+            "userId": userId,
+            "dishId": dishId
+            ] as [String : AnyObject]
+        let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/savehist"
+        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData){_ in}
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,6 +46,12 @@ class DishDetailViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+       
+        goButton.layer.cornerRadius = 25
+       
+        
+        
         
         if let _ = restInfo["name"]{
             restaurantName.text = restInfo["name"] as! String

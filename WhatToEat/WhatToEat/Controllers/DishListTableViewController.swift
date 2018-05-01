@@ -100,11 +100,12 @@ extension DishListTableViewController:DishTableViewCellDelegate{
         }
     }
     
-    func didTapDetailButton(restInfo: [String:AnyObject], dishImage:UIImage) {
+    func didTapDetailButton(restInfo: [String:AnyObject], dishImage:UIImage, dishId:String) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "dishDetailViewController") as! DishDetailViewController
         newViewController.restInfo = restInfo
         newViewController.dishImage = dishImage
+        newViewController.dishId = dishId
         self.navigationController?.pushViewController(newViewController, animated: true)
         
     }
@@ -208,9 +209,9 @@ extension DishListTableViewController{
             "userId": userId,
             "histId": itemId,
             "rating": rating
-            ] as [String : Any]
+            ] as [String : AnyObject]
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/ratedish"
-        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
+        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData ){_ in
             print("Rated")
         }
         
