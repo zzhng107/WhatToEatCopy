@@ -12,14 +12,12 @@ import os.log
 
 class Dish:NSObject, NSCoding{
   
-    
-    
-    var name: String
-    var photo: UIImage?
-    var rating: Int
-    var dishId: String
-    var restInfo:[String:AnyObject]
-    var extra: [String:AnyObject]
+    var name: String = ""
+    var photo: UIImage? = UIImage()
+    var rating: Int = 0
+    var dishId: String = ""
+    var restInfo:[String:AnyObject] = [:]
+    var extra: [String:AnyObject] = [:]
     
    
     init?(name: String, photo: UIImage?, rating: Int, dishId: String, restInfo:[String:AnyObject], extra:[String:AnyObject] = [:]) {
@@ -55,4 +53,36 @@ class Dish:NSObject, NSCoding{
     }
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    static func request(httpMethod:String, urlString:String, body:[String:AnyObject], withCompletion completion: @escaping (_ returnData:[String: AnyObject])->()){
+        
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = httpMethod
+        if httpMethod != "GET"{
+            do{
+                request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+            }catch{
+                print("Failed to serialize the body")
+            }
+        }
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            
+            guard let data = data, error == nil else{
+                print("error=\(error!)")
+                return
+            }
+            
+            do{
+                if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
+                    completion(output)
+                }
+            }catch{
+                print("error in second catch")
+            }
+        }
+        task.resume()
+    }
 }
