@@ -29,7 +29,9 @@ class DishTableViewCell: UITableViewCell,RatingControlDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        rateControl.delegate = self
+        if let rateControl = rateControl{
+            rateControl.delegate = self
+        }
         // Initialization code
     }
 
