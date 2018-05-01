@@ -12,27 +12,14 @@ import os.log
 
 class Dish:NSObject, NSCoding{
   
-    var name: String
-    var photo: UIImage?
-    var rating: Int
-    var dishId: String
-    var restInfo:[String:AnyObject]
-    var extra: [String:AnyObject]
+    var name: String = ""
+    var photo: UIImage? = UIImage()
+    var rating: Int = 0
+    var dishId: String = ""
+    var restInfo:[String:AnyObject] = [:]
+    var extra: [String:AnyObject] = [:]
     
    
-    init(dishId:String){
-        Dish.request(httpMethod: "GET", urlString: "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId, body: [:]){ returnData in
-                print(returnData)
-            }
-        
-        self.name = "name"
-        self.photo = UIImage()
-        self.rating = 0
-        self.dishId = "dishId"
-        self.restInfo = [:]
-        self.extra = [:]
-    }
-    
     init?(name: String, photo: UIImage?, rating: Int, dishId: String, restInfo:[String:AnyObject], extra:[String:AnyObject] = [:]) {
         if rating < 0 || rating > 5 {
             return nil
@@ -73,11 +60,12 @@ class Dish:NSObject, NSCoding{
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = httpMethod
-        
-        do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-        }catch{
-            print("Failed to serialize the body")
+        if httpMethod != "GET"{
+            do{
+                request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+            }catch{
+                print("Failed to serialize the body")
+            }
         }
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in

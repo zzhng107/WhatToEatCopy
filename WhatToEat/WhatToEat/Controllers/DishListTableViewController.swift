@@ -26,42 +26,22 @@ class DishListTableViewController: UITableViewController{
         super.viewDidLoad()
         self.tableView.separatorStyle = .none
         
+      
+
         if let savedDishes = loadDishes(){
             dishes += savedDishes
         }else{
             loadDefaultMeals()
         }
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/gethist"
+        
         loadDishesList(urlString: urlString , userId: userId){
             DispatchQueue.main.async{
-                self.dishes = [Dish]()
-                for dishData in self.rawDishesData{
-                    if let dishGeneralInfo = dishData as? [String:AnyObject]{
-                        let dishId = dishGeneralInfo["dishId"] as! String
-                        let itemId = dishGeneralInfo["itemId"] as! String
-                        let rating = dishGeneralInfo["rating"] as! Int
-                        let date = dishGeneralInfo["date"] as! String
-                        if let dishDetailInfo = dishGeneralInfo["info"] as? [String:AnyObject]{
-                            let imgUrl = dishDetailInfo["imgUrl"] as! String
-                            let url = URL(string: imgUrl)!
-                            let data = try? Data(contentsOf: url)
-                            var photo:UIImage? = nil
-                            if let imageData = data{
-                                photo = UIImage(data: imageData)
-                            }
-                            let name = dishDetailInfo["name"] as! String
-                            let extra = ["itemId":itemId, "date":date]  as [String : AnyObject]
-                            let restInfo = dishDetailInfo["restaurant"] as! [String : AnyObject]
-                            let dish = Dish(name: name, photo: photo, rating: rating, dishId:dishId, restInfo:restInfo,extra:extra)
-                            self.dishes.append(dish!)
-                        }
-                       
-                    }
-                }
-                self.saveDishes()
-                self.tableView.reloadData()
+                self.updateDishFromRawDishesData()
             }
         }
+        
+        
         
     }
     
@@ -114,33 +94,7 @@ extension DishListTableViewController:DishTableViewCellDelegate{
             
             self.loadDishesList(urlString: urlString , userId: self.userId){
                 DispatchQueue.main.async{
-                    self.dishes = [Dish]()
-                    for dishData in self.rawDishesData{
-                        if let dishGeneralInfo = dishData as? [String:AnyObject]{
-                            let dishId = dishGeneralInfo["dishId"] as! String
-                            let itemId = dishGeneralInfo["itemId"] as! String
-                            let rating = dishGeneralInfo["rating"] as! Int
-                            let date = dishGeneralInfo["date"] as! String
-                            if let dishDetailInfo = dishGeneralInfo["info"] as? [String:AnyObject]{
-                                let imgUrl = dishDetailInfo["imgUrl"] as! String
-                                let url = URL(string: imgUrl)!
-                                let data = try? Data(contentsOf: url)
-                                var photo:UIImage? = nil
-                                if let imageData = data{
-                                    photo = UIImage(data: imageData)
-                                }
-                                let name = dishDetailInfo["name"] as! String
-                                let extra = ["itemId":itemId, "date":date]  as [String : AnyObject]
-                                let restInfo = dishDetailInfo["restaurant"] as! [String : AnyObject]
-                                let dish = Dish(name: name, photo: photo, rating: rating, dishId:dishId, restInfo:restInfo,extra:extra)
-                                self.dishes.append(dish!)
-                            }
-                            
-                        }
-                    }
-                    self.saveDishes()
-                    print(self.dishes.count)
-                    self.tableView.reloadData()
+                    self.updateDishFromRawDishesData()
                 }
             }
         }
@@ -172,147 +126,108 @@ extension DishListTableViewController{
         dishes += [dish1]
     }
     
+    private func updateDishFromRawDishesData(){
+        self.dishes = [Dish]()
+        for dishData in self.rawDishesData{
+            if let dishGeneralInfo = dishData as? [String:AnyObject]{
+                let dishId = dishGeneralInfo["dishId"] as! String
+                let itemId = dishGeneralInfo["itemId"] as! String
+                let rating = dishGeneralInfo["rating"] as! Int
+                let date = dishGeneralInfo["date"] as! String
+                if let dishDetailInfo = dishGeneralInfo["info"] as? [String:AnyObject]{
+                    let imgUrl = dishDetailInfo["imgUrl"] as! String
+                    let url = URL(string: imgUrl)!
+                    let data = try? Data(contentsOf: url)
+                    var photo:UIImage? = nil
+                    if let imageData = data{
+                        photo = UIImage(data: imageData)
+                    }
+                    let name = dishDetailInfo["name"] as! String
+                    let extra = ["itemId":itemId, "date":date]  as [String : AnyObject]
+                    let restInfo = dishDetailInfo["restaurant"] as! [String : AnyObject]
+                    let dish = Dish(name: name, photo: photo, rating: rating, dishId:dishId, restInfo:restInfo,extra:extra)
+                    self.dishes.append(dish!)
+                }
+                
+            }
+        }
+        self.saveDishes()
+        print(self.dishes.count)
+        self.tableView.reloadData()
+    }
     
-//    private func loadDishesList(urlString:String,userId:String, withCompletion completion: @escaping ()->()){
-//        let bodyData = ["userId": userId]
-//        Dish.request(httpMethod: "Post", urlString: urlString, body: bodyData, withCompletion: <#T##([String : AnyObject]) -> ()#>)
-//    }
     
     private func loadDishesList(urlString:String,userId:String, withCompletion completion: @escaping ()->()){
+        
+        let bodyData = ["userId": userId]
+        Dish.request(httpMethod: "Post", urlString: urlString, body: bodyData as [String : AnyObject]){ returnData in
+            
+            self.rawDishesData = []
+            if let returnList = returnData["dishes"] as? [String: AnyObject] {
+                for (itemId, val) in returnList{
 
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let bodyData = [
-            "userId": userId,
-            ]
-        do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
-        }catch{
-            print("error in first catch")
-        }
+                    let nsdate = NSDate(timeIntervalSince1970: (val["dateCreated"] as! Double)/1000) as Date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                    let date = dateFormatter.string(from: nsdate)
 
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            guard let data = data, error == nil else{
-                print("error=\(error!)")
-                return
-            }
-
-            do{
-                if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
-                    self.rawDishesData = []
-                    for (itemId, val) in (output["dishes"] as? [String: AnyObject])!{
-
-                        let nsdate = NSDate(timeIntervalSince1970: (val["dateCreated"] as! Double)/1000) as Date
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-                        let date = dateFormatter.string(from: nsdate)
-
-                        self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:date, rating:val["rating"] as! Int){
-                            completion()
-                        }
+                    self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:date, rating:val["rating"] as! Int){
+                        completion()
                     }
-
                 }
-            }catch{
-                print("error in second catch")
+            }else{
+                completion()
             }
         }
-        task.resume()
+        
     }
+        
+
 
     
     
     
     
     private func fetchDishInfo(dishId:String, itemId:String,date:String, rating:Int, withCompletion completion: @escaping ()->()){
-        let url = URL(string: "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId)!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            guard let data = data, error == nil else{
-                print("error=\(error!)")
-                return
-            }
-            
-            do{
-                if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
-                    if let dishInfo = output["dish"]{
-                       
-                        let dic = ["itemId":itemId, "dishId":dishId, "info":dishInfo,"date":date, "rating":rating] as [String : Any]
-                        self.rawDishesData.append(dic as AnyObject)
-                        completion()
-                    }
-                }
-            }catch{
-                print("error in second catch")
+        let urlString =  "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId
+        Dish.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
+            if let dishInfo = returnData["dish"]{
+                let dic = ["itemId":itemId, "dishId":dishId, "info":dishInfo,"date":date, "rating":rating] as [String : Any]
+                self.rawDishesData.append(dic as AnyObject)
+                completion()
             }
         }
-        task.resume()
+        
     }
     
     
     
     private func callRateAPI(userId:String, itemId:String, rating: Int){
-        let url = URL(string: "https://us-central1-whattoeat-9712f.cloudfunctions.net/ratedish")!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        
         let bodyData = [
             "userId": userId,
             "histId": itemId,
             "rating": rating
             ] as [String : Any]
-        
-        do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
-        }catch{
-            print("error in first catch")
+        let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/ratedish"
+        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
+            print("Rated")
         }
         
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            guard let data = data, error == nil else{
-                print("error=\(error!)")
-                return
-            }
-            
-            do{
-                print("done")
-            }
-        }
-        task.resume()
     }
     
     private func callDeleteAPI(userId:String, itemId:String, withCompletion completion: @escaping ()->()){
-        let url = URL(string: "https://us-central1-whattoeat-9712f.cloudfunctions.net/deleteHist")!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/deleteHist"
+       
         let bodyData = [
             "userId": userId,
             "histId": itemId
             ] as [String : Any]
         
-        do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: bodyData, options: .prettyPrinted)
-        }catch{
-            print("error in first catch")
+        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
+            completion()
         }
         
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            guard let data = data, error == nil else{
-                print("error=\(error!)")
-                return
-            }
-            
-            do{
-                completion()
-            }
-        }
-        task.resume()
     }
     
     private func saveDishes() {
