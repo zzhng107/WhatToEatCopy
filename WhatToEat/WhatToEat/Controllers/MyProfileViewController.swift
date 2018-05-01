@@ -36,7 +36,7 @@ class MyProfileViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            userName.text = nameField.text
+            userName.text = inputName
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = userName.text!
             changeRequest?.commitChanges { (error) in
@@ -56,18 +56,19 @@ class MyProfileViewController: UIViewController {
         nameField.isHidden = !nameField.isHidden
         print("hello")
     }
-    // see if can user a listener instead
+    
+    // TODO: see if can user a listener instead
     func handleUser() {
-        print ("hhhh")
         if let user = Auth.auth().currentUser {
             // User is signed in.
 //            let user = Auth.auth().currentUser
             let email = user.email
             let name = user.displayName
+            let photoURL = user.photoURL
+            print(photoURL)
             userEmail.text = email
             userName.text = name
             print ("user found")
-            print (email)
         } else {
             // No user is signed in.
             // ...

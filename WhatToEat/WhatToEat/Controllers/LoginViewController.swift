@@ -206,7 +206,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         // ...
         if error != nil {
-            // ...
+            let title = "Something Went Wrong"
+            let message = error!.localizedDescription
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"\(title)\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            print(error!.localizedDescription)
             return
         }
         guard let authentication = user.authentication else { return }
@@ -214,7 +221,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
-                // ...
+                let title = "Something Went Wrong"
+                let message = error.localizedDescription
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"\(title)\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+                print(error.localizedDescription)
                 return
             }
             print("Successfully logged in view google")
@@ -241,13 +255,20 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success(let _, let _, let accessToken):
                 print("Logged in!")
                 print(accessToken.authenticationToken)
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
                 Auth.auth().signIn(with: credential) { (user, error) in
                     if let error = error {
-                        // ...
+                        let title = "Something Went Wrong"
+                        let message = error.localizedDescription
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                            NSLog("The \"\(title)\" alert occured.")
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        print(error.localizedDescription)
                         return
                     }
                     // User is signed in
@@ -297,12 +318,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func signInNavigate(_ user: User?) {
 //        let user = user!
         guard (user != nil) else {
-            print ("not user object.")
+            print ("no user object.")
             return
         }
-        let user = user!
+//        let user = user!
         self.performSegue(withIdentifier: "login", sender: self)
-//        print("here!!")
     }
     
 //    @IBAction func handleTmpSignOut(_ sender: UIButton) {

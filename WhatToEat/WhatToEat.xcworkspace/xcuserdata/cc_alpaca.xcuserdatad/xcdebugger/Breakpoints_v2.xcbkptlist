@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WhatToEat/Controllers/LoginViewController.swift"
-            timestampString = "546305640.955966"
+            timestampString = "546887921.318831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "handleFacebookSignIn(_:)"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "handleGoogleSignIn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WhatToEat/Controllers/LoginViewController.swift"
-            timestampString = "546305640.956033"
+            timestampString = "546887921.3189059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "handleGoogleSignIn(_:)"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "sign(_:didSignInFor:withError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
