@@ -137,14 +137,12 @@ class MyKolodaViewController: UIViewController {
     
     func loadDishes(_ urlString: String, completion: @escaping ()->()){
         
-        
         let dishes = NSKeyedUnarchiver.unarchiveObject(withFile: MyKolodaViewController.ArchiveURL.path) as? Array<(key: String, value: AnyObject)>
         
         if (dishes != nil) {
             dataSource = dishes!
             completion()
         }
-        
         
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
@@ -172,7 +170,6 @@ class MyKolodaViewController: UIViewController {
                     var tempDataSource = Array(response["dishes"]!)
                     tempDataSource.sort(by: { $0.value["score"] as! Int > $1.value["score"] as! Int })
                     
-                    
                     //Store to local
                     //                    let isSuccessfulSave =  NSKeyedArchiver.archiveRootObject(tempDataSource, toFile: MyKolodaViewController.ArchiveURL.path)
                     //                    if isSuccessfulSave{
@@ -181,8 +178,8 @@ class MyKolodaViewController: UIViewController {
                     //                        os_log("Failed to save meals...", log: OSLog.default, type: .error)
                     //                    }
                     
-                    
                     dataSource = tempDataSource
+                    
                     completion()
                 }
             }catch{
@@ -198,6 +195,7 @@ class MyKolodaViewController: UIViewController {
         
         super.viewDidLoad()
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        let sv = UIViewController.displaySpinner(onView: self.view)
         self.loadDishes( "https://us-central1-whattoeat-9712f.cloudfunctions.net/dishes" ) { () in
             
             var array: [UIImage] = []
@@ -228,6 +226,7 @@ class MyKolodaViewController: UIViewController {
             imgSource = array
             
             DispatchQueue.main.async(){
+                UIViewController.removeSpinner(spinner: sv)
                 self.kolodaView.dataSource = self
                 self.kolodaView.delegate = self
             }
@@ -245,9 +244,9 @@ extension MyKolodaViewController: KolodaViewDelegate {
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
         
-//        let detail = storyboard?.instantiateViewController(withIdentifier: "detail") as! TempDetailPageViewController
-//        detail.dishNamePassed = dataSource[kolodaView.currentCardIndex].value["name"] as! String
-//        navigationController?.pushViewController(detail, animated: true)zz
+        let detail = storyboard?.instantiateViewController(withIdentifier: "detail") as! TempDetailPageViewController
+        detail.dishNamePassed = dataSource[kolodaView.currentCardIndex].value["name"] as! String
+        navigationController?.pushViewController(detail, animated: true)
         
         //        UIApplication.shared.openURL(URL(string: "https://google.com")!)
     }
@@ -276,4 +275,28 @@ extension MyKolodaViewController: KolodaViewDataSource {
     //    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
     //        return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView
     //    }
+}
+
+
+extension UIViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
 }
