@@ -34,13 +34,14 @@ class DishListTableViewController: UITableViewController{
             loadDefaultMeals()
         }
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/gethist"
-        
+        let spinner = Util.displaySpinner(onView: self.view)
         loadDishesList(urlString: urlString , userId: userId){
             DispatchQueue.main.async{
                 self.updateDishFromRawDishesData()
+                Util.removeSpinner(spinner: spinner)
             }
         }
-        
+       
         
         
     }
@@ -88,13 +89,15 @@ class DishListTableViewController: UITableViewController{
 
 
 extension DishListTableViewController:DishTableViewCellDelegate{
-    func didTapDelteButton(itemId: String) {
+    func didTapDeleteButton(itemId: String) {
+        let spinner = Util.displaySpinner(onView: self.view)
         callDeleteAPI(userId: userId, itemId: itemId){
             let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/gethist"
             
             self.loadDishesList(urlString: urlString , userId: self.userId){
                 DispatchQueue.main.async{
                     self.updateDishFromRawDishesData()
+                    Util.removeSpinner(spinner: spinner)
                 }
             }
         }
@@ -147,13 +150,14 @@ extension DishListTableViewController{
                     let extra = ["itemId":itemId, "date":date]  as [String : AnyObject]
                     let restInfo = dishDetailInfo["restaurant"] as! [String : AnyObject]
                     let dish = Dish(name: name, photo: photo, rating: rating, dishId:dishId, restInfo:restInfo,extra:extra)
+                    
                     self.dishes.append(dish!)
+                    
                 }
                 
             }
         }
         self.saveDishes()
-        print(self.dishes.count)
         self.tableView.reloadData()
     }
     
@@ -194,7 +198,9 @@ extension DishListTableViewController{
         Dish.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
             if let dishInfo = returnData["dish"]{
                 let dic = ["itemId":itemId, "dishId":dishId, "info":dishInfo,"date":date, "rating":rating] as [String : Any]
+                DispatchQueue.main.async{
                 self.rawDishesData.append(dic as AnyObject)
+                }
                 completion()
             }
         }

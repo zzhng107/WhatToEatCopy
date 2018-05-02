@@ -34,10 +34,11 @@ class DishListSaveTableViewController: UITableViewController{
             loadDefaultMeals()
         }
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/getsaveforlater"
-        
+        let spinner = Util.displaySpinner(onView: self.view)
         loadDishesList(urlString: urlString , userId: userId){
             DispatchQueue.main.async{
                 self.updateDishFromRawDishesData()
+                Util.removeSpinner(spinner: spinner)
             }
         }
         
@@ -88,13 +89,15 @@ class DishListSaveTableViewController: UITableViewController{
 
 
 extension DishListSaveTableViewController:DishTableViewCellDelegate{
-    func didTapDelteButton(itemId: String) {
+    func didTapDeleteButton(itemId: String) {
+        let spinner = Util.displaySpinner(onView: self.view)
         callDeleteAPI(userId: userId, itemId: itemId){
             let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/getsaveforlater"
             
             self.loadDishesList(urlString: urlString , userId: self.userId){
                 DispatchQueue.main.async{
                     self.updateDishFromRawDishesData()
+                    Util.removeSpinner(spinner: spinner)
                 }
             }
         }
