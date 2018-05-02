@@ -120,7 +120,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 self.signInNavigate(user)
             }))
             self.present(alert, animated: true, completion: nil)
-            //            self.signInNavigate(user)
+//            self.signInNavigate(user)
         }
     }
     
@@ -332,7 +332,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             if tags == nil {
                 ref.child("users").child(user.uid).setValue(["tags": self.preferenceTags])
             }
-            print(self.preferenceTags)
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -340,15 +339,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         self.performSegue(withIdentifier: "login", sender: self)
     }
     
-    //    @IBAction func handleTmpSignOut(_ sender: UIButton) {
-    //        let firebaseAuth = Auth.auth()
-    //        do {
-    //            try firebaseAuth.signOut()
-    //            print("Signed out")
-    //        } catch let signOutError as NSError {
-    //            print ("Error signing out: %@", signOutError)
-    //        }
-    //    }
+//    @IBAction func handleTmpSignOut(_ sender: UIButton) {
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//            print("Signed out")
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "login" {

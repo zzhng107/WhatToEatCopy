@@ -546,7 +546,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q4C-kE-rhP" userLabel="Whole Stack View">
-                                <rect key="frame" x="0.0" y="1" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvO-Uu-gzt" userLabel="HeaderView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
@@ -887,7 +887,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="00m-7L-GWA" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="16" y="50" width="343" height="433"/>
+                                <rect key="frame" x="16" y="94" width="343" height="389"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HNV-ig-xUA">
                                         <rect key="frame" x="-18" y="-104" width="46" height="30"/>
@@ -940,7 +940,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mlw-x4-JFc" userLabel="Side Bar">
-                                <rect key="frame" x="-175" y="20" width="175" height="647"/>
+                                <rect key="frame" x="-175" y="64" width="175" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="jZX-Xb-pnf">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="160"/>
@@ -1051,11 +1051,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ff3-ea-Mog" userLabel="cover">
-                                        <rect key="frame" x="0.0" y="400" width="175" height="167"/>
+                                        <rect key="frame" x="0.0" y="400" width="175" height="123"/>
                                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0l-EJ-qU5">
-                                        <rect key="frame" x="0.0" y="567" width="175" height="80"/>
+                                        <rect key="frame" x="0.0" y="523" width="175" height="80"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3oa-gL-Ei0">
                                                 <rect key="frame" x="30" y="25" width="96" height="30"/>
@@ -1070,8 +1070,8 @@
                                                             <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="handleLogOut:" destination="jDp-LK-IMr" eventType="touchUpInside" id="o4r-pg-iVN"/>
-                                                            <segue destination="2xg-74-jZq" kind="show" identifier="logout" id="uIu-z1-PX2"/>
+                                                            <action selector="handleLogout:" destination="jDp-LK-IMr" eventType="touchUpInside" id="wua-vq-l7T"/>
+                                                            <segue destination="2xg-74-jZq" kind="show" id="9Cg-Am-SrJ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1283,10 +1283,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="9L2-kv-5At">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="164"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdv-34-wGU" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="164"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="XZ3-cX-rTV">
                                         <rect key="frame" x="36" y="48" width="86" height="86"/>
@@ -1317,7 +1317,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmx-HL-uqp" userLabel="editName">
                                         <rect key="frame" x="140" y="64" width="18" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="edit" image="feather-pencil-512 copy"/>
+                                        <state key="normal" title="edit" image="edit_name"/>
                                         <connections>
                                             <action selector="SettingName:" destination="oso-WI-p1Z" eventType="touchUpInside" id="HLe-B1-pBj"/>
                                         </connections>
@@ -1325,7 +1325,7 @@
                                 </subviews>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hj0-ta-J3e">
-                                <rect key="frame" x="0.0" y="164" width="375" height="454"/>
+                                <rect key="frame" x="0.0" y="208" width="375" height="410"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zk4-n0-FSf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="318"/>
@@ -1744,7 +1744,7 @@
         <image name="burger" width="25" height="25"/>
         <image name="delete" width="128" height="128"/>
         <image name="dislikeButton" width="50" height="50"/>
-        <image name="feather-pencil-512 copy" width="16" height="16"/>
+        <image name="edit_name" width="50" height="50"/>
         <image name="if_facebook_circle_color_107175 copy" width="50" height="50"/>
         <image name="info" width="64" height="64"/>
         <image name="likeButton" width="50" height="50"/>
@@ -1758,9 +1758,9 @@
         <image name="wechat_circle copy" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iRE-OX-BqL"/>
-        <segue reference="uIu-z1-PX2"/>
-        <segue reference="hQ1-nf-ier"/>
+        <segue reference="uJy-G4-oYx"/>
+        <segue reference="9fZ-Bm-z1H"/>
+        <segue reference="YIa-Ks-2cN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

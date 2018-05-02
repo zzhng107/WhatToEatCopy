@@ -8,6 +8,7 @@
 
 import Koloda
 import os
+import Firebase
 
 fileprivate var dataSource: Array<(key: String, value: AnyObject)> = []
 fileprivate var imgSource: [UIImage] = []
@@ -72,6 +73,17 @@ class MyKolodaViewController: UIViewController {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:{
             self.view.layoutIfNeeded()
         })
+    }
+    
+    
+    @IBAction func handleLogout(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Signed out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     
