@@ -28,6 +28,7 @@
 		802CBB47207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		802CBB48207D40F1002EFFB1 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */; };
 		80D72095208FDA16005F6A3A /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D72094208FDA16005F6A3A /* MyProfileViewController.swift */; };
+		87D328EC209A19E5001EC941 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D328EB209A19E5001EC941 /* TabBarController.swift */; };
 		A548305C31099790CEDB68B1 /* Pods_WhatToEat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */; };
 		A61A1FAC8A24443BCA83C92B /* Pods_WhatToEatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5FD51D66DF01C33FF76917 /* Pods_WhatToEatUITests.framework */; };
 		DAD3D30C0518E806D4F32A9E /* Pods_WhatToEatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */; };
@@ -80,6 +81,7 @@
 		802CBB38207D207A002EFFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802CBB45207D40F1002EFFB1 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		80D72094208FDA16005F6A3A /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		87D328EB209A19E5001EC941 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A6C67DE0B215E87E58131D2E /* Pods_WhatToEat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5B72B433C6CA43FCB44297 /* Pods-WhatToEatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEatUITests/Pods-WhatToEatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EB709CB85866E4570AEBD207 /* Pods_WhatToEatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 				24AD833D2086D9220040DBD0 /* DishListTableViewController.swift */,
 				80D72094208FDA16005F6A3A /* MyProfileViewController.swift */,
 				242F3B322098CD0600C75675 /* DishListSaveTableViewController.swift */,
+				87D328EB209A19E5001EC941 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				24AD8344208842980040DBD0 /* FirebaseUtil.swift in Sources */,
 				24AD833E2086D9220040DBD0 /* DishListTableViewController.swift in Sources */,
 				24AD83392086908E0040DBD0 /* MainPageViewController.swift in Sources */,
+				87D328EC209A19E5001EC941 /* TabBarController.swift in Sources */,
 				24AD83402086DB480040DBD0 /* Dish.swift in Sources */,
 				24AD832F207EF2E80040DBD0 /* DishDetailViewController.swift in Sources */,
 			);
