@@ -26,6 +26,9 @@ PODS:
   - Firebase/Database (4.12.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.5)
+  - Firebase/Storage (4.12.0):
+    - Firebase/Core
+    - FirebaseStorage (= 2.2.0)
   - FirebaseAnalytics (4.1.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -43,6 +46,10 @@ PODS:
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
+  - FirebaseStorage (2.2.0):
+    - FirebaseAnalytics (~> 4.1)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleMaps (2.6.0):
     - GoogleMaps/Maps (= 2.6.0)
   - GoogleMaps/Base (2.6.0)
@@ -88,6 +95,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Storage
   - GoogleMaps
   - GooglePlaces
   - GoogleSignIn
@@ -106,6 +114,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseStorage
     - GoogleMaps
     - GooglePlaces
     - GoogleSignIn
@@ -129,6 +138,7 @@ SPEC CHECKSUMS:
   FirebaseCore: ff49ebb37e0f63a570d78c4f1c1c0befe8659d5c
   FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  FirebaseStorage: 0c223481c8f89ed300cf1239ddd2d9833622c65f
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
@@ -140,6 +150,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
 
-PODFILE CHECKSUM: 8337656ee6e6829520c85b45b86c9d81bf720874
+PODFILE CHECKSUM: b85b6acac97106f7ff235273f94fd81c2481ed8f
 
 COCOAPODS: 1.5.0

@@ -255,7 +255,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let _, let _, let accessToken):
+            case .success(_, _, let accessToken):
                 print("Logged in!")
                 print(accessToken.authenticationToken)
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
