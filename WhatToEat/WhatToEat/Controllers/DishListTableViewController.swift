@@ -13,22 +13,30 @@ import FirebaseAuth
 
 class DishListTableViewController: UITableViewController{
 
+    //Setting up the appearance
     let cellSpacingHeight: CGFloat = 20
     let cardBackgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0)
+    
+    //Get the local storage path
     let ArchiveURL = Dish.DocumentsDirectory.appendingPathComponent("historyList")
+    
+    //Get the id of the current logined user
     var userId = Auth.auth().currentUser!.uid
+    
+    //Dish list
     var dishes = [Dish]()
     
-    
+    //This is the dish list contained uncleaned data
     private var rawDishesData:[AnyObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = .none
         
-      
-
-        if let savedDishes = loadDishes(){
+        //Try to load dish from the local storage first
+        //if failed load the default dish which is a sample dish
+        //Finally try to fetch the dishes from the remote database
+        if let savedDishes = loadLocalDishes(){
             dishes += savedDishes
         }else{
             loadDefaultMeals()
@@ -89,6 +97,7 @@ class DishListTableViewController: UITableViewController{
 
 
 extension DishListTableViewController:DishTableViewCellDelegate{
+    
     func didTapDeleteButton(itemId: String) {
         let spinner = Util.displaySpinner(onView: self.view)
         callDeleteAPI(userId: userId, itemId: itemId){
@@ -122,14 +131,16 @@ extension DishListTableViewController:DishTableViewCellDelegate{
 
 
 extension DishListTableViewController{
+    //Load the default dish which is a sample dish
     private func loadDefaultMeals() {
-        let image1 = UIImage(named: "miga_galbi_ribeye_steak")
-        guard let dish1 = Dish(name: "No Dish", photo: image1, rating: 4, dishId:"", restInfo:[:]) else {
+        let image1 = UIImage(named: "emptyImage")
+        guard let dish1 = Dish(name: "No Dish", photo: image1, rating: 0, dishId:"", restInfo:[:]) else {
             fatalError("Unable to instantiate dish1")
         }
         dishes += [dish1]
     }
     
+    //Update the dish with the rawDishesData
     private func updateDishFromRawDishesData(){
         self.dishes = [Dish]()
         for dishData in self.rawDishesData{
@@ -157,15 +168,15 @@ extension DishListTableViewController{
                 
             }
         }
-        self.saveDishes()
+        self.saveLocalDishes()
         self.tableView.reloadData()
     }
     
-    
+    //Load the dishes from the remote database
     private func loadDishesList(urlString:String,userId:String, withCompletion completion: @escaping ()->()){
         
         let bodyData = ["userId": userId]
-        Dish.request(httpMethod: "Post", urlString: urlString, body: bodyData as [String : AnyObject]){ returnData in
+        Util.request(httpMethod: "Post", urlString: urlString, body: bodyData as [String : AnyObject]){ returnData in
             
             self.rawDishesData = []
             if let returnList = returnData["dishes"] as? [String: AnyObject] {
@@ -187,15 +198,10 @@ extension DishListTableViewController{
         
     }
         
-
-
-    
-    
-    
-    
+    //Load the dish by dishId
     private func fetchDishInfo(dishId:String, itemId:String,date:String, rating:Int, withCompletion completion: @escaping ()->()){
         let urlString =  "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId
-        Dish.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
+        Util.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
             if let dishInfo = returnData["dish"]{
                 let dic = ["itemId":itemId, "dishId":dishId, "info":dishInfo,"date":date, "rating":rating] as [String : Any]
                 DispatchQueue.main.async{
@@ -207,8 +213,7 @@ extension DishListTableViewController{
         
     }
     
-    
-    
+    //Rate a dish in the history by call the rate api
     private func callRateAPI(userId:String, itemId:String, rating: Int){
         
         let bodyData = [
@@ -217,12 +222,13 @@ extension DishListTableViewController{
             "rating": rating
             ] as [String : AnyObject]
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/ratedish"
-        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData ){_ in
+        Util.request(httpMethod: "POST", urlString: urlString, body: bodyData ){_ in
             print("Rated")
         }
         
     }
     
+    //Delete a dish in the history by call the delete api
     private func callDeleteAPI(userId:String, itemId:String, withCompletion completion: @escaping ()->()){
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/deleteHist"
        
@@ -231,13 +237,14 @@ extension DishListTableViewController{
             "histId": itemId
             ] as [String : Any]
         
-        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
+        Util.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
             completion()
         }
         
     }
     
-    private func saveDishes() {
+    //Save the dish list to the local storage
+    private func saveLocalDishes() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(dishes, toFile: ArchiveURL.path)
         if isSuccessfulSave {
             os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
@@ -246,7 +253,8 @@ extension DishListTableViewController{
         }
     }
     
-    private func loadDishes() -> [Dish]? {
+    //Load the dish list from the local storage
+    private func loadLocalDishes() -> [Dish]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: ArchiveURL.path) as? [Dish]
     }
 }

@@ -34,7 +34,7 @@ class DishDetailViewController: UIViewController {
             "dishId": dishId
             ] as [String : AnyObject]
         let urlString = "https://us-central1-whattoeat-9712f.cloudfunctions.net/savehist"
-        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData){_ in}
+        Util.request(httpMethod: "POST", urlString: urlString, body: bodyData){_ in}
     }
     
     
@@ -52,7 +52,8 @@ class DishDetailViewController: UIViewController {
        
         
         
-        
+        //Set the detail page with the restInfo (infomation of the restaurant) if the restInfo has infos
+        //Else just set the variable of the page with default values
         if let _ = restInfo["name"]{
             restaurantName.text = restInfo["name"] as! String
             priceRate.rating = Int(restInfo["price"] as! Float)

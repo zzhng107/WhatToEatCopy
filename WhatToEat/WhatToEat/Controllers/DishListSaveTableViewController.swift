@@ -163,7 +163,7 @@ extension DishListSaveTableViewController{
     private func loadDishesList(urlString:String,userId:String, withCompletion completion: @escaping ()->()){
         
         let bodyData = ["userId": userId]
-        Dish.request(httpMethod: "Post", urlString: urlString, body: bodyData as [String : AnyObject]){ returnData in
+        Util.request(httpMethod: "Post", urlString: urlString, body: bodyData as [String : AnyObject]){ returnData in
             
             self.rawDishesData = []
             if let returnList = returnData["dishes"] as? [String: AnyObject] {
@@ -186,14 +186,9 @@ extension DishListSaveTableViewController{
     }
     
     
-    
-    
-    
-    
-    
     private func fetchDishInfo(dishId:String, itemId:String,date:String,  withCompletion completion: @escaping ()->()){
         let urlString =  "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId
-        Dish.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
+        Util.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
             if let dishInfo = returnData["dish"]{
                 let dic = ["itemId":itemId, "dishId":dishId, "info":dishInfo,"date":date] as [String : Any]
                 self.rawDishesData.append(dic as AnyObject)
@@ -212,7 +207,7 @@ extension DishListSaveTableViewController{
             "saveId": itemId
             ] as [String : Any]
         
-        Dish.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
+        Util.request(httpMethod: "POST", urlString: urlString, body: bodyData as [String : AnyObject]){_ in
             completion()
         }
         

@@ -24,7 +24,6 @@ class Dish:NSObject, NSCoding{
         if rating < 0 || rating > 5 {
             return nil
         }
-        
         self.name = name
         self.photo = photo
         self.rating = rating
@@ -32,6 +31,7 @@ class Dish:NSObject, NSCoding{
         self.restInfo = restInfo
         self.extra = extra
     }
+    
     required convenience init?(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObject(forKey: "name") as! String
         let dishId = aDecoder.decodeObject(forKey: "dishId") as! String
@@ -54,35 +54,5 @@ class Dish:NSObject, NSCoding{
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    static func request(httpMethod:String, urlString:String, body:[String:AnyObject], withCompletion completion: @escaping (_ returnData:[String: AnyObject])->()){
-        
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = httpMethod
-        if httpMethod != "GET"{
-            do{
-                request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-            }catch{
-                print("Failed to serialize the body")
-            }
-        }
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-            
-            guard let data = data, error == nil else{
-                print("error=\(error!)")
-                return
-            }
-            
-            do{
-                if let output = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
-                    completion(output)
-                }
-            }catch{
-                print("error in second catch")
-            }
-        }
-        task.resume()
-    }
+    
 }
