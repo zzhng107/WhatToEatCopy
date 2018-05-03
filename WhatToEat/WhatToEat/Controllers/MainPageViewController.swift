@@ -16,6 +16,12 @@ private var numberOfCards: Int = 20
 
 class MyKolodaViewController: UIViewController {
     
+    var filterData:[String : Any] = [
+        "price":[false, false, false, false],
+        "rating":[false, false, false, false, false],
+        "distance":10
+        ]
+    
     //    class Meal: NSObject, NSCoding {
     struct PropertyKey {
         static let name = "name"
@@ -200,6 +206,10 @@ class MyKolodaViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: Lifecycle
