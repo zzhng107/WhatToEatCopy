@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		242F3B332098CD0600C75675 /* DishListSaveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3B322098CD0600C75675 /* DishListSaveTableViewController.swift */; };
 		242F3B352099042100C75675 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3B342099042100C75675 /* Util.swift */; };
+		242F3B37209B68DD00C75675 /* FilterPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3B36209B68DD00C75675 /* FilterPageController.swift */; };
 		24AD832F207EF2E80040DBD0 /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD832E207EF2E80040DBD0 /* DishDetailViewController.swift */; };
 		24AD8331207EFC550040DBD0 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD8330207EFC550040DBD0 /* RatingControl.swift */; };
 		24AD83392086908E0040DBD0 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD83382086908E0040DBD0 /* MainPageViewController.swift */; };
@@ -56,6 +57,7 @@
 		237C5F3A03A265300FFB4EAA /* Pods-WhatToEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToEat/Pods-WhatToEat.debug.xcconfig"; sourceTree = "<group>"; };
 		242F3B322098CD0600C75675 /* DishListSaveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListSaveTableViewController.swift; sourceTree = "<group>"; };
 		242F3B342099042100C75675 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		242F3B36209B68DD00C75675 /* FilterPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPageController.swift; sourceTree = "<group>"; };
 		24AD832E207EF2E80040DBD0 /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		24AD8330207EFC550040DBD0 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		24AD83382086908E0040DBD0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				80D72094208FDA16005F6A3A /* MyProfileViewController.swift */,
 				242F3B322098CD0600C75675 /* DishListSaveTableViewController.swift */,
 				87D328EB209A19E5001EC941 /* TabBarController.swift */,
+				242F3B36209B68DD00C75675 /* FilterPageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				24AD8344208842980040DBD0 /* FirebaseUtil.swift in Sources */,
 				24AD833E2086D9220040DBD0 /* DishListTableViewController.swift in Sources */,
 				24AD83392086908E0040DBD0 /* MainPageViewController.swift in Sources */,
+				242F3B37209B68DD00C75675 /* FilterPageController.swift in Sources */,
 				87D328EC209A19E5001EC941 /* TabBarController.swift in Sources */,
 				24AD83402086DB480040DBD0 /* Dish.swift in Sources */,
 				24AD832F207EF2E80040DBD0 /* DishDetailViewController.swift in Sources */,
