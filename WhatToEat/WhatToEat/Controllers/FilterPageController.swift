@@ -14,9 +14,11 @@ class FilterPageController:UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     
+    //Button colors
     let buttonSelectedColor = UIColor(red:1.00, green:0.82, blue:0.22, alpha:1.0)
     let buttonDeselectedColor = UIColor(red:0.67, green:0.67, blue:0.67, alpha:1.0)
     
+    //UserDefault used to save the data locally
     let defaults = UserDefaults.standard
     
     override func didReceiveMemoryWarning() {
@@ -25,7 +27,9 @@ class FilterPageController:UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         navigationController?.delegate = self
         
         loadFromLocal()
@@ -44,17 +48,20 @@ class FilterPageController:UIViewController {
         
     }
     
+    //When button is clicked, toggle its color
     @objc private func buttonClicked(button:UIButton){
         if (button.backgroundColor?.isEqual(buttonSelectedColor))!{
             button.backgroundColor = buttonDeselectedColor
         }
         else {button.backgroundColor = buttonSelectedColor}
     }
-    
+    //When the slider is changed, update the label
     @IBAction func sliderValueOnChange(_ sender: UISlider) {
         setDistanceLabel(value:sender.value)
     }
     
+    //Record the states of the buttons in a button group
+    //Return a list of booleans which represent the state of the each button
     private func countSelectedButtons(buttons:UIView) -> [Bool]{
         var retArray:[Bool] = []
         for button in buttons.subviews{
@@ -69,6 +76,7 @@ class FilterPageController:UIViewController {
         return retArray
     }
     
+    //Get the distance from the current label
     private func getDistance() -> Float{
         if distanceLabel.text == "No Limit"{
             return 10
@@ -77,6 +85,7 @@ class FilterPageController:UIViewController {
         }
     }
     
+    //Get the filterData from the current states of the buttons and the label of the slider
     private func getFilterData() -> [String:Any]{
         let filterData:[String:Any] = [
             "price": self.countSelectedButtons(buttons: priceButtons),
@@ -86,6 +95,7 @@ class FilterPageController:UIViewController {
         return filterData
     }
     
+    //Set the label slider label
     private func setDistanceLabel(value:Float){
         if value != 10{
             let currentValueString = String(format: "%.2f",value)
@@ -95,6 +105,7 @@ class FilterPageController:UIViewController {
         }
     }
     
+    //Set the states of buttons and the value of the slider label from the filterData
     private func setFromData(filterData:[String:Any]){
         let priceData = filterData["price"] as! [Bool]
         let ratingData = filterData["rating"] as! [Bool]
@@ -121,10 +132,12 @@ class FilterPageController:UIViewController {
         slider.setValue(distanceData, animated: false)
     }
     
+    //Save the filterData to the local
     private func saveToLocal(filterData:[String:Any]){
         defaults.set(filterData, forKey: "filterData")
     }
     
+    //Load the data from the local and update the buttons and slider.
     private func loadFromLocal(){
         let filterData = defaults.object(forKey: "filterData") as? [String : Any]
         if let filterData = filterData{
@@ -136,9 +149,10 @@ class FilterPageController:UIViewController {
 }
 
 extension FilterPageController: UINavigationControllerDelegate {
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         let filterData = self.getFilterData()
-        saveToLocal(filterData: filterData)
-        (viewController as? MyKolodaViewController)?.filterData = filterData
+        saveToLocal(filterData: filterData) 
+        (viewController as? MyKolodaViewController)?.filterData = filterData //Pass the data back to the main page
     }
 }
