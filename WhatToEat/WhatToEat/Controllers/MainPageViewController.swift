@@ -8,10 +8,14 @@
 
 import Koloda
 import os
+import Firebase
+import FirebaseAuth
 
 fileprivate var dataSource: Array<(key: String, value: AnyObject)> = []
 fileprivate var imgSource: [UIImage] = []
-private var numberOfCards: Int = 20
+
+let userId = Auth.auth().currentUser!.uid
+var numberOfCards: Int = 20
 
 class MyKolodaViewController: UIViewController {
     
@@ -42,7 +46,7 @@ class MyKolodaViewController: UIViewController {
     
     @IBAction func likeAction(_ sender: Any) {
         //        if let dishId = dataSource[kolodaView.currentCardIndex] as? [String: AnyObject]{
-        bookMark("5a2dbb53af64cc0021027198", dataSource[kolodaView.currentCardIndex].key)
+        bookMark(userId, dataSource[kolodaView.currentCardIndex].key)
         //        }else{
         //            print("error in likeAction")
         //        }
@@ -53,7 +57,7 @@ class MyKolodaViewController: UIViewController {
     }
     @IBAction func goAction(_ sender: Any) {
         //        if let dishId = dataSource[kolodaView.currentCardIndex] as? [String: AnyObject]{
-        go("5a2dbb53af64cc0021027198", dataSource[kolodaView.currentCardIndex].key)
+        go(userId, dataSource[kolodaView.currentCardIndex].key)
         //        }else{
         //            print("error in likeAction")
         //        }
@@ -135,7 +139,7 @@ class MyKolodaViewController: UIViewController {
     }
     
     
-    func loadDishes(_ urlString: String, completion: @escaping ()->()){
+    func loadDishes(_ urlString: String, _ userId_: String, completion: @escaping ()->()){
         
         let dishes = NSKeyedUnarchiver.unarchiveObject(withFile: MyKolodaViewController.ArchiveURL.path) as? Array<(key: String, value: AnyObject)>
         
@@ -149,7 +153,7 @@ class MyKolodaViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let userId = [
-            "userId": "5a2dbb53af64cc0021027198",
+            "userId": userId_,
             ]
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: userId, options: .prettyPrinted)
@@ -196,7 +200,7 @@ class MyKolodaViewController: UIViewController {
         super.viewDidLoad()
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         let sv = UIViewController.displaySpinner(onView: self.view)
-        self.loadDishes( "https://us-central1-whattoeat-9712f.cloudfunctions.net/dishes" ) { () in
+        self.loadDishes( "https://us-central1-whattoeat-9712f.cloudfunctions.net/dishes", userId ) { () in
             
             var array: [UIImage] = []
             //                let urls = dataSource.map({
