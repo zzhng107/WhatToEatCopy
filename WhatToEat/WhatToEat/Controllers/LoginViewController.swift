@@ -120,7 +120,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 self.signInNavigate(user)
             }))
             self.present(alert, animated: true, completion: nil)
-//            self.signInNavigate(user)
+            //            self.signInNavigate(user)
         }
     }
     
@@ -206,7 +206,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         // ...
         if error != nil {
-            // ...
+            let title = "Something Went Wrong"
+            let message = error!.localizedDescription
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"\(title)\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            print(error!.localizedDescription)
             return
         }
         guard let authentication = user.authentication else { return }
@@ -214,7 +221,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
-                // ...
+                let title = "Something Went Wrong"
+                let message = error.localizedDescription
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"\(title)\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+                print(error.localizedDescription)
                 return
             }
             print("Successfully logged in view google")
@@ -241,13 +255,20 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success(_, _, let accessToken):
                 print("Logged in!")
                 print(accessToken.authenticationToken)
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
                 Auth.auth().signIn(with: credential) { (user, error) in
                     if let error = error {
-                        // ...
+                        let title = "Something Went Wrong"
+                        let message = error.localizedDescription
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                            NSLog("The \"\(title)\" alert occured.")
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        print(error.localizedDescription)
                         return
                     }
                     // User is signed in
@@ -294,26 +315,40 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         }
     }
     
+    var preferenceTags = ["Chinese": 5, "American": 5, "Korean": 5, "Japanese": 5, "French": 5, "Italian": 5, "Indian": 5, "Mexican": 5, "Spicy": 5, "Beef": 5, "Pork": 5, "Chicken": 5, "Vegetarian": 5, "Vegan": 5]
+    
     func signInNavigate(_ user: User?) {
-//        let user = user!
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
         guard (user != nil) else {
-            print ("not user object.")
+            print ("no user object.")
             return
         }
         let user = user!
+        ref.child("users").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let tags = value?["tags"]
+            if tags == nil {
+                ref.child("users").child(user.uid).setValue(["tags": self.preferenceTags])
+            }
+            print(self.preferenceTags)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
         self.performSegue(withIdentifier: "login", sender: self)
-//        print("here!!")
     }
     
-//    @IBAction func handleTmpSignOut(_ sender: UIButton) {
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//            print("Signed out")
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
-//    }
+    //    @IBAction func handleTmpSignOut(_ sender: UIButton) {
+    //        let firebaseAuth = Auth.auth()
+    //        do {
+    //            try firebaseAuth.signOut()
+    //            print("Signed out")
+    //        } catch let signOutError as NSError {
+    //            print ("Error signing out: %@", signOutError)
+    //        }
+    //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "login" {

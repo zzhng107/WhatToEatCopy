@@ -19,6 +19,12 @@ var numberOfCards: Int = 20
 
 class MyKolodaViewController: UIViewController {
     
+    var filterData:[String : Any] = [
+        "price":[false, false, false, false],
+        "rating":[false, false, false, false, false],
+        "distance":10
+        ]
+    
     //    class Meal: NSObject, NSCoding {
     struct PropertyKey {
         static let name = "name"
@@ -76,6 +82,17 @@ class MyKolodaViewController: UIViewController {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations:{
             self.view.layoutIfNeeded()
         })
+    }
+    
+    
+    @IBAction func handleLogout(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Signed out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     
@@ -192,6 +209,10 @@ class MyKolodaViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     // MARK: Lifecycle
