@@ -11,11 +11,14 @@ import os
 import Firebase
 import FirebaseAuth
 
+
 fileprivate var dataSource: Array<(key: String, value: AnyObject)> = []
+fileprivate var dataSourceNoFailedImg: Array<(key: String, value: AnyObject)> = []
+fileprivate var filteredDataSourceNoFailedImg: Array<(key: String, value: AnyObject)> = []
+
 fileprivate var imgSource: [UIImage] = []
 
 let userId = Auth.auth().currentUser!.uid
-var numberOfCards: Int = 20
 
 class MyKolodaViewController: UIViewController {
     
@@ -45,6 +48,7 @@ class MyKolodaViewController: UIViewController {
     
     @IBOutlet weak var sideBar: UIStackView!
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var userEmail: UITextField!
     
     @IBOutlet weak var go: UIButton!
     @IBOutlet weak var like: UIButton!
@@ -52,6 +56,7 @@ class MyKolodaViewController: UIViewController {
     
     @IBAction func likeAction(_ sender: Any) {
         //        if let dishId = dataSource[kolodaView.currentCardIndex] as? [String: AnyObject]{
+//        print(dataSource[kolodaView.currentCardIndex].value["imgUrl"])
         bookMark(userId, dataSource[kolodaView.currentCardIndex].key)
         //        }else{
         //            print("error in likeAction")
@@ -59,6 +64,7 @@ class MyKolodaViewController: UIViewController {
         kolodaView?.swipe(.right)
     }
     @IBAction func dislikeAction(_ sender: Any) {
+        print(kolodaView.currentCardIndex)
         kolodaView?.swipe(.left)
     }
     @IBAction func goAction(_ sender: Any) {
@@ -68,6 +74,71 @@ class MyKolodaViewController: UIViewController {
         //            print("error in likeAction")
         //        }
         kolodaView?.swipe(.left)
+    }
+    
+    // MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.userEmail.placeholder = Auth.auth().currentUser!.email
+        self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        self.loadDishes( "https://us-central1-whattoeat-9712f.cloudfunctions.net/dishes", userId ) { () in
+            
+            //TODO: remove bad image
+            dataSourceNoFailedImg = dataSource
+            filteredDataSourceNoFailedImg = dataSourceNoFailedImg
+            self.updateImg()
+            DispatchQueue.main.async(){
+                UIViewController.removeSpinner(spinner: sv)
+                self.kolodaView.dataSource = self
+                self.kolodaView.delegate = self
+            }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        filterDishes()
+        updateImg()
+        kolodaView.reloadData()
+    }
+    
+    func filterDishes(){
+        filteredDataSourceNoFailedImg = dataSourceNoFailedImg.filter{(dish)->Bool in
+            
+            let rest = dish.value["restaurant"] as! [String: AnyObject]
+            let price = rest["price"] as! Int
+            let stars = rest["stars"] as! Float
+            let myIntValue:Int = Int(stars)
+            let filterPrice = filterData["price"] as! [Bool]
+            let filterStars = filterData["rating"] as! [Bool]
+//            return true
+            if(filterPrice[price] && filterStars[myIntValue]){
+//            if(filterPrice[price-1]){
+                return true
+            }
+            return false
+            
+        }
+    }
+    
+    func updateImg(){
+        var array: [UIImage] = []
+        for dish in filteredDataSourceNoFailedImg {
+            let url = URL(string: dish.value["imgUrl"] as! String)!
+            let data = try? Data(contentsOf: url)
+            
+            if let imageData = data {
+                let image = UIImage(data: imageData)
+                array.append(image!)
+            }
+        }
+        imgSource = array
+    }
+    
+    func removeItem(_ key: String){
+        dataSourceNoFailedImg = dataSourceNoFailedImg.filter{$0.key != key}
+        filteredDataSourceNoFailedImg = filteredDataSourceNoFailedImg.filter{$0.key != key}
     }
     
     var sideBarShow = false
@@ -200,7 +271,6 @@ class MyKolodaViewController: UIViewController {
                     //                    }
                     
                     dataSource = tempDataSource
-                    
                     completion()
                 }
             }catch{
@@ -211,76 +281,38 @@ class MyKolodaViewController: UIViewController {
         task.resume()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
-    // MARK: Lifecycle
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
-        let sv = UIViewController.displaySpinner(onView: self.view)
-        self.loadDishes( "https://us-central1-whattoeat-9712f.cloudfunctions.net/dishes", userId ) { () in
-            
-            var array: [UIImage] = []
-            //                let urls = dataSource.map({
-            //                    (key: String, value: AnyObject) -> URL in
-            //                    return URL(string: value["imgUrl"])!
-            //                })
-            
-            //                let urls = dataSource.map({ (key: String, value: AnyObject) -> URL in
-            //                    return URL(string: value["imgUrl"] as! String)!
-            //                })
-            
-            let urls = dataSource.map({ (_, val) -> URL in
-                return URL(string: val["imgUrl"] as! String)!
-            })
-            
-            for index in 0..<numberOfCards {
-                
-                let url = urls[index]
-                let data = try? Data(contentsOf: url)
-                
-                if let imageData = data {
-                    let image = UIImage(data: imageData)
-                    array.append(image!)
-                }
-            }
-            
-            imgSource = array
-            
-            DispatchQueue.main.async(){
-                UIViewController.removeSpinner(spinner: sv)
-                self.kolodaView.dataSource = self
-                self.kolodaView.delegate = self
-            }
-            
-            
-        }
-    }
+    
+    
 }
 
 
 extension MyKolodaViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-        koloda.reloadData()
+        kolodaView.reloadData()
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+
+        let detail = storyboard?.instantiateViewController(withIdentifier: "dishDetailViewController") as! DishDetailViewController
+        let dishData = dataSource[kolodaView.currentCardIndex]
+//        print(dishData)
+        detail.restInfo = dishData.value["restaurant"] as! [String : AnyObject]
+//        let imgUrl = URL(string: dishData.value["imgUrl"] as! String)!
+//        let imgData = try? Data(contentsOf: imgUrl)
+//        detail.dishImage = UIImage(data: imgData!)!
+        detail.dishImage = imgSource[index]
         
-//        let detail = storyboard?.instantiateViewController(withIdentifier: "detail") as! TempDetailPageViewController
-//        detail.dishNamePassed = dataSource[kolodaView.currentCardIndex].value["name"] as! String
-//        navigationController?.pushViewController(detail, animated: true)
-//        
-//        //        UIApplication.shared.openURL(URL(string: "https://google.com")!)
+        detail.dishId = dishData.key
+        self.navigationController?.pushViewController(detail, animated: true)
+
     }
 }
 
 extension MyKolodaViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return dataSource.count
+        return imgSource.count
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
@@ -288,12 +320,11 @@ extension MyKolodaViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+//        print(index)
         let out = UIImageView(image: imgSource[Int(index)])
-        
         out.layer.cornerRadius = 8.0
         out.clipsToBounds = true
         out.contentMode = .scaleAspectFill;
-        
         return out
     }
     
@@ -301,7 +332,6 @@ extension MyKolodaViewController: KolodaViewDataSource {
     //        return Bundle.main.loadNibNamed("OverlayView", owner: self, options: nil)?[0] as? OverlayView
     //    }
 }
-
 
 extension UIViewController {
     class func displaySpinner(onView : UIView) -> UIView {
