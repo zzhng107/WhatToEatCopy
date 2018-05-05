@@ -57,7 +57,7 @@ class FilterPageController:UIViewController {
     }
     //When the slider is changed, update the label
     @IBAction func sliderValueOnChange(_ sender: UISlider) {
-        setDistanceLabel(value:sender.value)
+        setDistanceLabel(value:Double(sender.value))
     }
     
     //Record the states of the buttons in a button group
@@ -96,7 +96,7 @@ class FilterPageController:UIViewController {
     }
     
     //Set the label slider label
-    private func setDistanceLabel(value:Float){
+    private func setDistanceLabel(value:Double){
         if value != 10{
             let currentValueString = String(format: "%.2f",value)
             distanceLabel.text = "\(currentValueString) miles"
@@ -105,11 +105,21 @@ class FilterPageController:UIViewController {
         }
     }
     
+    @IBAction func clearButtonOnClick(_ sender: Any) {
+        let filterData:[String : Any] = [
+            "price":[false, false, false, false],
+            "rating":[false, false, false, false, false],
+            "distance":10.0
+        ]
+        setFromData(filterData: filterData)
+    }
+    
+    
     //Set the states of buttons and the value of the slider label from the filterData
     private func setFromData(filterData:[String:Any]){
         let priceData = filterData["price"] as! [Bool]
         let ratingData = filterData["rating"] as! [Bool]
-        let distanceData = filterData["distance"] as! Float
+        let distanceData = filterData["distance"] as! Double
         for (index,button) in priceButtons.subviews.enumerated(){
             if let button = button as? UIButton{
                 if(priceData[index]){
@@ -129,7 +139,7 @@ class FilterPageController:UIViewController {
             }
         }
         setDistanceLabel(value: distanceData)
-        slider.setValue(distanceData, animated: false)
+        slider.setValue(Float(distanceData), animated: false)
     }
     
     //Save the filterData to the local

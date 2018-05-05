@@ -555,6 +555,19 @@
                                     <action selector="sliderValueOnChange:" destination="mqa-he-nJr" eventType="valueChanged" id="Cir-yZ-1RN"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bt4-PV-THA">
+                                <rect key="frame" x="50" y="522" width="85" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="M6D-no-yU1"/>
+                                </constraints>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButtonOnClick:" destination="mqa-he-nJr" eventType="touchUpInside" id="Igq-VH-8io"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -562,8 +575,10 @@
                             <constraint firstItem="iwc-se-QGf" firstAttribute="leading" secondItem="rCe-N0-BrD" secondAttribute="leading" constant="50" id="DZy-XD-TTm"/>
                             <constraint firstItem="yCq-OJ-Agm" firstAttribute="top" secondItem="BW5-bQ-ZJn" secondAttribute="bottom" constant="20" id="J55-7H-agC"/>
                             <constraint firstItem="Px3-hR-bWt" firstAttribute="centerX" secondItem="1Km-hT-0Pf" secondAttribute="centerX" id="Ks2-KX-bRb"/>
+                            <constraint firstItem="Bt4-PV-THA" firstAttribute="leading" secondItem="rCe-N0-BrD" secondAttribute="leading" constant="50" id="Stg-0l-LS4"/>
                             <constraint firstItem="BW5-bQ-ZJn" firstAttribute="leading" secondItem="rCe-N0-BrD" secondAttribute="leading" constant="50" id="Tm8-ZF-aiB"/>
                             <constraint firstItem="n0x-fm-RlH" firstAttribute="leading" secondItem="rCe-N0-BrD" secondAttribute="leading" constant="50" id="XtO-xZ-3Wd"/>
+                            <constraint firstItem="Bt4-PV-THA" firstAttribute="top" secondItem="yCq-OJ-Agm" secondAttribute="bottom" constant="81" id="Y27-pL-dFJ"/>
                             <constraint firstItem="rUB-x4-h0k" firstAttribute="leading" secondItem="rCe-N0-BrD" secondAttribute="leading" constant="50" id="dDX-XH-0kf"/>
                             <constraint firstItem="i2S-Ud-3UQ" firstAttribute="leading" secondItem="rCe-N0-BrD" secondAttribute="leading" constant="50" id="dS2-g5-sKh"/>
                             <constraint firstItem="BW5-bQ-ZJn" firstAttribute="top" secondItem="iwc-se-QGf" secondAttribute="bottom" constant="30" id="gW0-xJ-hRh"/>
