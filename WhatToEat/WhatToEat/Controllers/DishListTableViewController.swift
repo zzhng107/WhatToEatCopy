@@ -77,7 +77,7 @@ class DishListTableViewController: UITableViewController{
         cell.delegate = self
         cell.dishNameLabel.text = dish.name
         cell.itemId = dish.extra["itemId"] as? String
-        cell.img.image = dish.photo
+        cell.img.image = dish.photo ?? UIImage(named:"noImage")
         cell.rateControl.rating = dish.rating
         cell.dateLabel.text = dish.extra["date"] as? String
         cell.dishId = dish.dishId

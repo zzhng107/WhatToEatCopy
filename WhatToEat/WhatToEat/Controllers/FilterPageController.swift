@@ -152,7 +152,7 @@ extension FilterPageController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         let filterData = self.getFilterData()
-        saveToLocal(filterData: filterData) 
+        saveToLocal(filterData: filterData)
         (viewController as? MyKolodaViewController)?.filterData = filterData //Pass the data back to the main page
     }
 }

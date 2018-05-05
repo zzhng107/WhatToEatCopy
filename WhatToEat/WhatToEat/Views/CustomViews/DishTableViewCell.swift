@@ -19,6 +19,7 @@ class DishTableViewCell: UITableViewCell,RatingControlDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var rateControl: RatingControl!
     @IBOutlet weak var img: UIImageView!
+        
     @IBOutlet weak var dishNameLabel: UILabel!
     
     var itemId:String?
@@ -49,7 +50,7 @@ class DishTableViewCell: UITableViewCell,RatingControlDelegate {
     
     @IBAction func detailButtonOnClick(_ sender: Any) {
         if let restInfo = restInfo{
-            delegate?.didTapDetailButton(restInfo: restInfo, dishImage:img.image!, dishId: dishId!)
+            delegate?.didTapDetailButton(restInfo: restInfo, dishImage:img.image ?? UIImage(named:"noImage")!, dishId: dishId!)
         }
     }
     
