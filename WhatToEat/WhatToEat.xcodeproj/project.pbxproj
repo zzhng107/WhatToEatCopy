@@ -36,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		242F3B41209DEB2800C75675 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 802CBB0B207D2077002EFFB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 802CBB12207D2077002EFFB1;
+			remoteInfo = WhatToEat;
+		};
 		802CBB28207D207A002EFFB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 802CBB0B207D2077002EFFB1 /* Project object */;
@@ -58,6 +65,7 @@
 		242F3B322098CD0600C75675 /* DishListSaveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListSaveTableViewController.swift; sourceTree = "<group>"; };
 		242F3B342099042100C75675 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		242F3B36209B68DD00C75675 /* FilterPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPageController.swift; sourceTree = "<group>"; };
+		242F3B3C209DEB2800C75675 /* FilterMockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilterMockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24AD832E207EF2E80040DBD0 /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		24AD8330207EFC550040DBD0 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		24AD83382086908E0040DBD0 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +100,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		242F3B39209DEB2800C75675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		802CBB10207D2077002EFFB1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,6 +221,7 @@
 				802CBB13207D2077002EFFB1 /* WhatToEat.app */,
 				802CBB27207D207A002EFFB1 /* WhatToEatTests.xctest */,
 				802CBB32207D207A002EFFB1 /* WhatToEatUITests.xctest */,
+				242F3B3C209DEB2800C75675 /* FilterMockTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,6 +268,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		242F3B3B209DEB2800C75675 /* FilterMockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 242F3B45209DEB2800C75675 /* Build configuration list for PBXNativeTarget "FilterMockTests" */;
+			buildPhases = (
+				242F3B38209DEB2800C75675 /* Sources */,
+				242F3B39209DEB2800C75675 /* Frameworks */,
+				242F3B3A209DEB2800C75675 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				242F3B42209DEB2800C75675 /* PBXTargetDependency */,
+			);
+			name = FilterMockTests;
+			productName = FilterMockTests;
+			productReference = 242F3B3C209DEB2800C75675 /* FilterMockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		802CBB12207D2077002EFFB1 /* WhatToEat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 802CBB3B207D207A002EFFB1 /* Build configuration list for PBXNativeTarget "WhatToEat" */;
@@ -320,6 +354,10 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "CHEN CHEN";
 				TargetAttributes = {
+					242F3B3B209DEB2800C75675 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 802CBB12207D2077002EFFB1;
+					};
 					802CBB12207D2077002EFFB1 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -349,11 +387,19 @@
 				802CBB12207D2077002EFFB1 /* WhatToEat */,
 				802CBB26207D207A002EFFB1 /* WhatToEatTests */,
 				802CBB31207D207A002EFFB1 /* WhatToEatUITests */,
+				242F3B3B209DEB2800C75675 /* FilterMockTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		242F3B3A209DEB2800C75675 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		802CBB11207D2077002EFFB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,6 +547,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		242F3B38209DEB2800C75675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		802CBB0F207D2077002EFFB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,6 +597,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		242F3B42209DEB2800C75675 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 802CBB12207D2077002EFFB1 /* WhatToEat */;
+			targetProxy = 242F3B41209DEB2800C75675 /* PBXContainerItemProxy */;
+		};
 		802CBB29207D207A002EFFB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 802CBB12207D2077002EFFB1 /* WhatToEat */;
@@ -576,6 +634,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		242F3B43209DEB2800C75675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HR63KKCHQ9;
+				INFOPLIST_FILE = FilterMockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.FilterMockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatToEat.app/WhatToEat";
+			};
+			name = Debug;
+		};
+		242F3B44209DEB2800C75675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HR63KKCHQ9;
+				INFOPLIST_FILE = FilterMockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.FilterMockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatToEat.app/WhatToEat";
+			};
+			name = Release;
+		};
 		802CBB39207D207A002EFFB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -821,6 +919,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		242F3B45209DEB2800C75675 /* Build configuration list for PBXNativeTarget "FilterMockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				242F3B43209DEB2800C75675 /* Debug */,
+				242F3B44209DEB2800C75675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		802CBB0E207D2077002EFFB1 /* Build configuration list for PBXProject "WhatToEat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

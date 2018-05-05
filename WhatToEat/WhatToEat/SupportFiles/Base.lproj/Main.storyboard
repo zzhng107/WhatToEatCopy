@@ -205,7 +205,7 @@
         <!--History-->
         <scene sceneID="b0x-r3-tIA">
             <objects>
-                <tableViewController title="History" id="tw1-j0-4ye" customClass="DishListTableViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="dishListTableViewController" title="History" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tw1-j0-4ye" customClass="DishListTableViewController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="no6-Fh-GJ4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="2729" y="47"/>
         </scene>
-        <!--Filter Page Controller-->
+        <!--Filter-->
         <scene sceneID="97q-If-fy3">
             <objects>
-                <viewController id="mqa-he-nJr" customClass="FilterPageController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Filter" title="Filter" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mqa-he-nJr" customClass="FilterPageController" customModule="WhatToEat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Km-hT-0Pf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

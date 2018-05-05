@@ -19,7 +19,7 @@ class FilterPageController:UIViewController {
     let buttonDeselectedColor = UIColor(red:0.67, green:0.67, blue:0.67, alpha:1.0)
     
     //UserDefault used to save the data locally
-    let defaults = UserDefaults.standard
+    var defaults = UserDefaults.standard
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,7 +62,7 @@ class FilterPageController:UIViewController {
     
     //Record the states of the buttons in a button group
     //Return a list of booleans which represent the state of the each button
-    private func countSelectedButtons(buttons:UIView) -> [Bool]{
+    internal func countSelectedButtons(buttons:UIView) -> [Bool]{
         var retArray:[Bool] = []
         for button in buttons.subviews{
             if let button = button as? UIButton{
@@ -105,7 +105,13 @@ class FilterPageController:UIViewController {
         }
     }
     
+    //Clear all the selection and slider value
     @IBAction func clearButtonOnClick(_ sender: Any) {
+        resetFilter()
+    }
+    
+    
+    internal func resetFilter(){
         let filterData:[String : Any] = [
             "price":[false, false, false, false],
             "rating":[false, false, false, false, false],
@@ -113,6 +119,7 @@ class FilterPageController:UIViewController {
         ]
         setFromData(filterData: filterData)
     }
+    
     
     
     //Set the states of buttons and the value of the slider label from the filterData
@@ -143,7 +150,7 @@ class FilterPageController:UIViewController {
     }
     
     //Save the filterData to the local
-    private func saveToLocal(filterData:[String:Any]){
+    internal func saveToLocal(filterData:[String:Any]){
         defaults.set(filterData, forKey: "filterData")
     }
     
