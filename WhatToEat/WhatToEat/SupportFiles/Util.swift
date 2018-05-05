@@ -11,6 +11,15 @@ import UIKit
 
 class Util{
    
+    
+    static func convertDateToHumanReadable(rawTime:Double) -> String{
+        let nsdate = NSDate(timeIntervalSince1970: rawTime/1000) as Date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        return dateFormatter.string(from: nsdate)
+    }
+    
+    
     static func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)

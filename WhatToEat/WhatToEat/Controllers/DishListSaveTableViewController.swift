@@ -18,8 +18,6 @@ class DishListSaveTableViewController: UITableViewController{
     let ArchiveURL = Dish.DocumentsDirectory.appendingPathComponent("saveList")
     var userId = Auth.auth().currentUser!.uid
     var dishes = [Dish]()
-    
-    
     private var rawDishesData:[AnyObject] = []
     
     override func viewDidLoad() {
@@ -121,6 +119,11 @@ extension DishListSaveTableViewController:DishTableViewCellDelegate{
 
 
 extension DishListSaveTableViewController{
+    
+    private func sortRawDishesData(){
+        self.rawDishesData = self.rawDishesData.sorted(by: {$0["date"] as! Double > $1["date"] as! Double})
+    }
+    
     private func loadDefaultMeals() {
         let image1 = UIImage(named: "miga_galbi_ribeye_steak")
         guard let dish1 = Dish(name: "No Dish", photo: image1, rating: 4, dishId:"", restInfo:[:]) else {
@@ -131,11 +134,12 @@ extension DishListSaveTableViewController{
     
     private func updateDishFromRawDishesData(){
         self.dishes = [Dish]()
+        self.sortRawDishesData()
         for dishData in self.rawDishesData{
             if let dishGeneralInfo = dishData as? [String:AnyObject]{
                 let dishId = dishGeneralInfo["dishId"] as! String
                 let itemId = dishGeneralInfo["itemId"] as! String
-                let date = dishGeneralInfo["date"] as! String
+                let date = Util.convertDateToHumanReadable(rawTime: dishGeneralInfo["date"] as! Double)
                 if let dishDetailInfo = dishGeneralInfo["info"] as? [String:AnyObject]{
                     let imgUrl = dishDetailInfo["imgUrl"] as! String
                     let url = URL(string: imgUrl)!
@@ -168,12 +172,8 @@ extension DishListSaveTableViewController{
             if let returnList = returnData["dishes"] as? [String: AnyObject] {
                 for (itemId, val) in returnList{
                     
-                    let nsdate = NSDate(timeIntervalSince1970: (val["dateCreated"] as! Double)/1000) as Date
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-                    let date = dateFormatter.string(from: nsdate)
                     
-                    self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:date){
+                    self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:val["dateCreated"] as! Double){
                         completion()
                     }
                 }
@@ -185,7 +185,7 @@ extension DishListSaveTableViewController{
     }
     
     
-    private func fetchDishInfo(dishId:String, itemId:String,date:String,  withCompletion completion: @escaping ()->()){
+    private func fetchDishInfo(dishId:String, itemId:String,date:Double,  withCompletion completion: @escaping ()->()){
         let urlString =  "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId
         Util.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
             if let dishInfo = returnData["dish"]{

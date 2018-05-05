@@ -46,6 +46,7 @@ class DishListTableViewController: UITableViewController{
         loadDishesList(urlString: urlString , userId: userId){
             DispatchQueue.main.async{
                 self.updateDishFromRawDishesData()
+                self.tableView.reloadData()
                 Util.removeSpinner(spinner: spinner)
             }
         }
@@ -131,6 +132,13 @@ extension DishListTableViewController:DishTableViewCellDelegate{
 
 
 extension DishListTableViewController{
+    
+    private func sortRawDishesData(){
+        self.rawDishesData = self.rawDishesData.sorted(by: {$0["date"] as! Double > $1["date"] as! Double})
+    }
+    
+   
+    
     //Load the default dish which is a sample dish
     private func loadDefaultMeals() {
         let image1 = UIImage(named: "emptyImage")
@@ -143,12 +151,13 @@ extension DishListTableViewController{
     //Update the dish with the rawDishesData
     private func updateDishFromRawDishesData(){
         self.dishes = [Dish]()
+        self.sortRawDishesData()
         for dishData in self.rawDishesData{
             if let dishGeneralInfo = dishData as? [String:AnyObject]{
                 let dishId = dishGeneralInfo["dishId"] as! String
                 let itemId = dishGeneralInfo["itemId"] as! String
                 let rating = dishGeneralInfo["rating"] as! Int
-                let date = dishGeneralInfo["date"] as! String
+                let date = Util.convertDateToHumanReadable(rawTime: dishGeneralInfo["date"] as! Double)
                 if let dishDetailInfo = dishGeneralInfo["info"] as? [String:AnyObject]{
                     let imgUrl = dishDetailInfo["imgUrl"] as! String
                     let url = URL(string: imgUrl)!
@@ -169,7 +178,7 @@ extension DishListTableViewController{
             }
         }
         self.saveLocalDishes()
-        self.tableView.reloadData()
+        
     }
     
     //Load the dishes from the remote database
@@ -182,12 +191,9 @@ extension DishListTableViewController{
             if let returnList = returnData["dishes"] as? [String: AnyObject] {
                 for (itemId, val) in returnList{
 
-                    let nsdate = NSDate(timeIntervalSince1970: (val["dateCreated"] as! Double)/1000) as Date
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-                    let date = dateFormatter.string(from: nsdate)
+                   
 
-                    self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:date, rating:val["rating"] as! Int){
+                    self.fetchDishInfo(dishId: val["dishId"] as! String, itemId:itemId, date:val["dateCreated"] as! Double, rating:val["rating"] as! Int){
                         completion()
                     }
                 }
@@ -197,9 +203,11 @@ extension DishListTableViewController{
         }
         
     }
-        
+    
+   
+    
     //Load the dish by dishId
-    private func fetchDishInfo(dishId:String, itemId:String,date:String, rating:Int, withCompletion completion: @escaping ()->()){
+    private func fetchDishInfo(dishId:String, itemId:String,date:Double, rating:Int, withCompletion completion: @escaping ()->()){
         let urlString =  "https://us-central1-whattoeat-9712f.cloudfunctions.net/dish?key="+dishId
         Util.request(httpMethod: "GET", urlString: urlString, body:[:]){returnData in
             if let dishInfo = returnData["dish"]{
